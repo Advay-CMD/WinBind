@@ -1,7 +1,7 @@
 @echo off
 set GXX=D:\gcc\mingw64\bin\g++.exe
 set CFLAGS=-O2 -static -mwindows -std=c++11
-set LIBS=-lole32 -lgdi32 -luser32 -luuid
+set LIBS=-lole32 -lgdi32 -luser32 -luuid -ldwmapi
 
 taskkill /f /im winbind.exe >nul 2>&1
 if %ERRORLEVEL%==0 echo Stopped running WinBind.exe
