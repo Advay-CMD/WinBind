@@ -45,8 +45,12 @@ public:
 struct Keybinding {
     DWORD modifiers;      // Bitmask (MODB_WIN | MODB_CTRL | etc.)
     DWORD vkCode;         // Virtual-key code
-    std::string action;   // "SWITCH", "MOVE", or "MOVE_SWITCH"
+    std::string action;   // "SWITCH", "MOVE", "MOVE_SWITCH", "REMOVE_EMPTY", "SIMULATE_KEY"
     int arg;              // Target desktop number (1-based)
+    DWORD targetMods;     // For SIMULATE_KEY: modifiers to simulate
+    DWORD targetVk;       // For SIMULATE_KEY: key to simulate
+    std::string runApp;   // For the APP
+    std::string runArgs;  // For the Args
 };
 
 class Keybinder {
@@ -76,9 +80,12 @@ private:
 
     void SwitchToDesktop(int num);
     void MoveCurrentWindowToDesktop(int num);
+    void RemoveEmptyDesktops(int sourceDesktop = -1);
+    bool IsModTracked(WORD vk);
     DWORD GetModifierState();
     DWORD KeyNameToVK(const std::string& name);
     void SimulateKeyCombo(WORD mod1, WORD mod2, WORD key);
+    void SimulateKeyCombo(DWORD mods, DWORD vk);
 
     HHOOK m_hHook;
     HWND m_hWnd;
@@ -89,6 +96,10 @@ private:
     bool m_newDesktopCreation;      // New_Desktop_Creation config flag
     bool m_allowBadKeys;            // Allow_Bad_Keys config flag
     bool m_windowAndDesktopSwitch;  // Window_And_Virtual_Desktop_Switch config flag
+    bool m_autoRemoveDesktop;       // Auto_Remove_Virtual_Desktop config flag
+    bool m_busy;                    // Prevents re-entrant key processing
+    bool m_simulating;              // Guards against re-trigger from injected keys
+    DWORD m_modsTracked;            // Real-time modifier state from hook events
     std::string m_configPath;
     FILETIME m_configTime;
 };
