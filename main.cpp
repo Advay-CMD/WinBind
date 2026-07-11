@@ -1,14 +1,30 @@
 // WinBind - Entry point
-// Creates a hidden message-only window, initializes the keyboard hook,
-// and runs the message loop that dispatches queued hotkey actions.
-#include "keybinder.h"
+// Creates a hidden message-only window, runs the keyboard hook message loop,
+// and periodically applies window transparency & window styling.
 
-// Window procedure for the hidden message-only window.
-// WM_KB_EXECUTE is posted by the keyboard hook to execute
-// an action asynchronously outside the hook callback context.
+#include "keybinder.h"
+#include "Transparency/Transparency.h"
+#include "WindowStyler/WindowStyler.h"
+#include <windows.h>
+
+#define TIMER_TRANSPARENCY 1
+#define TIMER_WINDOWSTYLER 2
+
 static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     if (msg == WM_KB_EXECUTE) {
         Keybinder::Instance().ExecuteQueuedAction((int)wParam);
+        return 0;
+    }
+    if (msg == WM_TIMER && wParam == TIMER_TRANSPARENCY) {
+        int opacity = LoadTransparencyConfig();
+        if (opacity > 0 && opacity < 100)
+            EnumWindows(EnumWindowsProc, (LPARAM)opacity);
+        return 0;
+    }
+    if (msg == WM_TIMER && wParam == TIMER_WINDOWSTYLER) {
+        WindowStylerSettings ws = LoadWindowStylerConfig();
+        if (ws.enabled)
+            EnumWindows(WindowStylerEnumProc, (LPARAM)&ws);
         return 0;
     }
     return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -38,9 +54,19 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int) {
         HWND_MESSAGE, NULL, hInst, NULL);
     kb.SetWindowHandle(hWnd);
 
-    if (!kb.Init()) {
-        return 1;
+    if (!kb.Init()) return 1;
+
+    // Apply StealFocus at startup if enabled
+    {
+        WindowStylerSettings ws = LoadWindowStylerConfig();
+        if (ws.stealFocus) StealFocus(TRUE);
     }
+
+    int delayMs = LoadTransparencyDelayMs();
+    SetTimer(hWnd, TIMER_TRANSPARENCY, delayMs, NULL);
+
+    int wsDelayMs = LoadWindowStylerDelayMs();
+    SetTimer(hWnd, TIMER_WINDOWSTYLER, wsDelayMs, NULL);
 
     MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
