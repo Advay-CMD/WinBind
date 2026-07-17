@@ -1,6 +1,7 @@
 // WinBind - keybinder script Header
 // Declares the Keybinder class: a low-level keyboard hook that intercepts
 // configurable hotkeys and translates them into virtual desktop operations.
+// Also my magnum opus — 800+ lines of pure Windows jank.
 #pragma once
 #include <windows.h>
 #include <string>
@@ -49,8 +50,9 @@ struct Keybinding {
     int arg;              // Target desktop number (1-based)
     DWORD targetMods;     // For SIMULATE_KEY: modifiers to simulate
     DWORD targetVk;       // For SIMULATE_KEY: key to simulate
-    std::string runApp;   // For the APP
-    std::string runArgs;  // For the Args
+    std::string runApp;
+    std::string runArgs;
+    std::string confLoadPath;  // For RELOAD_CONFIG: path passed to LoadConf
 };
 
 class Keybinder {
@@ -101,5 +103,3 @@ private:
     bool m_simulating;              // Guards against re-trigger from injected keys
     DWORD m_modsTracked;            // Real-time modifier state from hook events
     std::string m_configPath;
-    FILETIME m_configTime;
-};
