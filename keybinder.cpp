@@ -3,6 +3,7 @@
 // SendInput-based switching, and flicker-free empty-desktop deletion
 // via the undocumented COM Virtual Desktop Manager service.
 
+
 #include <windows.h>
 #include <winreg.h>
 #include <shlobj.h>
@@ -10,6 +11,7 @@
 #include <dwmapi.h>
 #include <shlguid.h>
 #include "keybinder.h"
+#include "Config.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -18,6 +20,7 @@
 #include <signal.h>
 #include <setjmp.h>
 #include <shellapi.h>
+#include <map>
 
 // ===========================================================================
 // COM GUIDs for the undocumented IVirtualDesktopManagerInternal
@@ -99,6 +102,7 @@ static IServiceProvider* GetShellServiceProvider() {
 
 // Moves the window identified by hWnd to targetGuid via the undocumented COM
 // service.  Returns true on success.  SIGSEGV-protected.
+
 static bool TryMoveWindowViaService(HWND hWnd, const GUID& targetGuid) {
     void (*oldHandler)(int) = signal(SIGSEGV, SigSegvHandler);
     bool success = false;
@@ -687,6 +691,12 @@ void Keybinder::ExecuteAction(const Keybinding& kb) {
         ShellExecuteA(NULL, "open", kb.runApp.c_str(),
             kb.runArgs.empty() ? NULL : kb.runArgs.c_str(),
             NULL, SW_SHOWNORMAL);
+    } else if (kb.action == "RELOAD_CONFIG") {
+        std::string p = kb.confLoadPath.empty() ? g_ConfigPath : kb.confLoadPath;
+        LoadConf[p];
+        m_configPath = p;
+        g_ConfigPath = p;
+        LoadConfig(p);
     }
 }
 
@@ -706,6 +716,9 @@ void Keybinder::LoadConfig(const std::string& path) {
     std::ifstream file(path);
     if (!file.is_open()) return;
 
+    // Variable store — var NAME = "value"
+    std::map<std::string, std::string> vars;
+
     std::string line;
     while (std::getline(file, line)) {
         line = Trim(line);
@@ -717,6 +730,30 @@ void Keybinder::LoadConfig(const std::string& path) {
         std::string lhs = Trim(line.substr(0, eq));
         std::string rhs = Trim(line.substr(eq + 1));
         if (lhs.empty() || rhs.empty()) continue;
+
+        // ---- Variable definition: var NAME = "value" ----
+        {
+            std::string lc = lhs;
+            std::transform(lc.begin(), lc.end(), lc.begin(), ::tolower);
+            if (lc.find("var ") == 0) {
+                std::string varKey = Trim(lhs.substr(4));
+                std::string varVal = rhs;
+                if (varVal.size() >= 2 && varVal[0] == '"' && varVal.back() == '"')
+                    varVal = varVal.substr(1, varVal.size() - 2);
+                vars[varKey] = varVal;
+                continue;
+            }
+        }
+
+        // ---- Substitute $VAR$ in rhs before processing ----
+        for (std::map<std::string, std::string>::iterator it = vars.begin(); it != vars.end(); ++it) {
+            std::string pattern = "$" + it->first + "$";
+            size_t pos = 0;
+            while ((pos = rhs.find(pattern, pos)) != std::string::npos) {
+                rhs.replace(pos, pattern.length(), it->second);
+                pos += it->second.length();
+            }
+        }
 
         // Boolean flags
         auto parseBool = [&](bool& flag) {
@@ -764,44 +801,7 @@ void Keybinder::LoadConfig(const std::string& path) {
             act = "SIMULATE_KEY";
         }
 
-        DWORD mods = 0;
-        std::string keyName;
-        std::string runApp, runArgs;
-        if (act.find("RUN(") == 0 && act.back() == ')') {
-            std::string inner = act.substr(4, act.size() - 5);
-            size_t comma = inner.find(',');
-            if (comma != std::string::npos) {
-                runApp = Trim(inner.substr(0, comma));
-                runArgs = Trim(inner.substr(comma + 1));
-            } else {
-                runApp = Trim(inner);
-            }
-            // Strip quotes
-            if (runApp.size() >= 2 && runApp[0] == '"' && runApp.back() == '"')
-                runApp = runApp.substr(1, runApp.size() - 2);
-            if (runArgs.size() >= 2 && runArgs[0] == '"' && runArgs.back() == '"')
-                runArgs = runArgs.substr(1, runArgs.size() - 2);
-            act = "RUN";
-        }
-
-        for (size_t sp = 0;;) {
-            size_t pp = lhs.find('+', sp);
-            std::string p = Trim(lhs.substr(sp, (pp == std::string::npos) ? std::string::npos : pp - sp));
-            DWORD m = ParseModifier(p);
-            if (m) mods |= m; else keyName = p;
-            if (pp == std::string::npos) break;
-            sp = pp + 1;
-        }
-
-        DWORD vk = KeyNameToVK(keyName);
-        if (vk == 0) continue;
-        if (!m_allowBadKeys && IsSystemShortcut(mods, vk)) continue;
-        if (!m_windowAndDesktopSwitch && act == "MOVE_SWITCH") continue;
-
-        Keybinding kb;
-        kb.modifiers = mods; kb.vkCode = vk; kb.action = act; kb.arg = arg;
-        kb.targetMods = targetMods; kb.targetVk = targetVk;
-        kb.runApp = runApp; kb.runArgs = runArgs;
-        m_bindings.push_back(kb);
-    }
-}
+        // LoadConf["path"] — same space issue as RUN()
+        std::string confLoadPath;
+        if (act.find("LOADCONF[") == 0) {
+            size_t openB = rhs.find('[');
