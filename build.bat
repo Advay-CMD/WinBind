@@ -9,7 +9,7 @@ if %ERRORLEVEL%==0 echo Stopped running WinBind.exe
 ping -n 2 127.0.0.1 >nul 2>&1
 
 echo Compiling WinBind...
-"%GXX%" %CFLAGS% main.cpp keybinder.cpp "Transparency\Transparency.cpp" "WindowStyler\WindowStyler.cpp" -o WinBind.exe %LIBS%
+"%GXX%" %CFLAGS% main.cpp keybinder.cpp Config.cpp "Transparency\Transparency.cpp" "WindowStyler\WindowStyler.cpp" -o WinBind.exe %LIBS%
 if %ERRORLEVEL%==0 ( echo OK ) else ( echo FAILED! & goto end )
 
 if "%1"=="--run" (
