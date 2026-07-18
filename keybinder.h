@@ -103,3 +103,5 @@ private:
     bool m_simulating;              // Guards against re-trigger from injected keys
     DWORD m_modsTracked;            // Real-time modifier state from hook events
     std::string m_configPath;
+    FILETIME m_configTime;
+};

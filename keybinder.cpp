@@ -805,3 +805,56 @@ void Keybinder::LoadConfig(const std::string& path) {
         std::string confLoadPath;
         if (act.find("LOADCONF[") == 0) {
             size_t openB = rhs.find('[');
+            size_t closeB = rhs.find_last_of(']');
+            if (openB != std::string::npos && closeB != std::string::npos) {
+                std::string inner = Trim(rhs.substr(openB + 1, closeB - openB - 1));
+                if (inner.size() >= 2 && inner[0] == '"' && inner.back() == '"')
+                    inner = inner.substr(1, inner.size() - 2);
+                confLoadPath = inner;
+            }
+            act = "RELOAD_CONFIG";
+        }
+
+        DWORD mods = 0;
+        std::string keyName;
+        std::string runApp, runArgs;
+        if (act.find("RUN(") == 0 && act.back() == ')') {
+            // Use rhs (original case) so rundll32 entry points don't get mangled
+            std::string inner = rhs.substr(4, rhs.size() - 5);
+            size_t comma = inner.find(',');
+            if (comma != std::string::npos) {
+                runApp = Trim(inner.substr(0, comma));
+                runArgs = Trim(inner.substr(comma + 1));
+            } else {
+                runApp = Trim(inner);
+            }
+            // Strip quotes
+            if (runApp.size() >= 2 && runApp[0] == '"' && runApp.back() == '"')
+                runApp = runApp.substr(1, runApp.size() - 2);
+            if (runArgs.size() >= 2 && runArgs[0] == '"' && runArgs.back() == '"')
+                runArgs = runArgs.substr(1, runArgs.size() - 2);
+            act = "RUN";
+        }
+
+        for (size_t sp = 0;;) {
+            size_t pp = lhs.find('+', sp);
+            std::string p = Trim(lhs.substr(sp, (pp == std::string::npos) ? std::string::npos : pp - sp));
+            DWORD m = ParseModifier(p);
+            if (m) mods |= m; else keyName = p;
+            if (pp == std::string::npos) break;
+            sp = pp + 1;
+        }
+
+        DWORD vk = KeyNameToVK(keyName);
+        if (vk == 0) continue;
+        if (!m_allowBadKeys && IsSystemShortcut(mods, vk)) continue;
+        if (!m_windowAndDesktopSwitch && act == "MOVE_SWITCH") continue;
+
+        Keybinding kb;
+        kb.modifiers = mods; kb.vkCode = vk; kb.action = act; kb.arg = arg;
+        kb.targetMods = targetMods; kb.targetVk = targetVk;
+        kb.runApp = runApp; kb.runArgs = runArgs;
+        kb.confLoadPath = confLoadPath;
+        m_bindings.push_back(kb);
+    }
+}

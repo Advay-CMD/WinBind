@@ -21,3 +21,7 @@ Here are some places I didn't use AI:
 ## Need a visual proof?
 
 Here is a short video showing the power that WinBind has, within just 1 *.conf* file.
+
+## What is WinBind?
+
+WinBind is both a customization and productivity tool
