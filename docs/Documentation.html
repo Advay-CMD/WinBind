@@ -30,7 +30,7 @@
                 <a href="Documentation.html"><i class="ph-bold ph-file-text"></i> Documentation</a>
                 <a href="#contribute"><i class="ph-bold ph-handshake"></i> Contribute</a>
                 <a href="#sponsor"><i class="ph-bold ph-heart"></i> Sponsor</a>
-                <a href="#installation" class="nav-btn" onclick="navigate('installation')">Get Started</a>
+                <a href="Download.html" class="nav-btn" onclick="navigate('welcome')">Get Started</a>
                 <a href="https://discord.com" target="_blank"><i class="ph-bold ph-discord-logo"></i></a>
                 <a href="https://github.com/Advay-CMD/WinBind/" target="_blank"><i class="ph-bold ph-github-logo"></i></a>
             </div>
@@ -92,662 +92,1021 @@
     const CONTENT = {
         welcome: `
             <h1>Welcome to WinBind!</h1>
-            <p>
-                Hello there! Welcome to the WinBind Documentation! Here you will learn
-                to use WinBind effectively and efficiently so that you will love the
-                experience and will use the app at its maximum!
-            </p>
-            <h2>What you will learn</h2>
+            <p>Hello there! Welcome to the Getting Started Guide! Here I am going to teach you to use WinBind effectively and efficiently so that you will love the experience and will use the app at its maximum!</p>
+            <h3>You would learn:</h3>
             <ul>
-                <li>How to read and edit the <code>.conf</code> file</li>
+                <li>How to read and edit the .config</li>
                 <li>How to make and assign KeyBindings to make shortcuts easier</li>
                 <li>How to run commands using KeyBindings</li>
                 <li>How to simulate keys with a shortcut</li>
-                <li>How to add alternative shortcut to shortcuts (e.g. CTRL+V simulated by CTRL+SHIFT+V)</li>
-                <li>And much more!</li>
+                <li>How to add alternative shortcut to shortcuts(Example: CTRL+V simulated by CTRL+SHIFT+V)</li>
+                <li>& <em>much more</em>!</li>
             </ul>
-            <blockquote>
-                <strong>Ready?</strong> Start with
-                <a href="#" onclick="navigate('editing-config')">Editing the Config</a>
-                or jump straight to <a href="#" onclick="navigate('making-keybinds')">Making Keybinds</a>.
-            </blockquote>
-        `,
-
-        installation: `
-            <h1>Installation</h1>
-            <p>
-                WinBind is distributed as a single binary. Download the latest release from
-                <a href="https://github.com/Advay-CMD/WinBind/releases" target="_blank">GitHub Releases</a>.
-            </p>
-            <h2>Build from Source</h2>
-            <pre><code>git clone https://github.com/Advay-CMD/WinBind.git
-cd WinBind
-build.bat          # Compile only
-build.bat --run    # Compile & launch</code></pre>
-            <blockquote>
-                <strong>Note:</strong> Requires a C++11 compiler (MinGW GCC recommended)
-                and the Windows SDK. No admin rights needed.
-            </blockquote>
+            <div align="right"><a href="#" onclick="navigate('making-keybinds')">Next -> <em>Making a KeyBind</em></a></div>
         `,
 
         'editing-config': `
-            <h1>Editing the Configuration File</h1>
-            <p>
-                Most people will not even know there was a <code>.conf</code> file.
-                Let's see how to edit it the right way.
-            </p>
-            <h2>Where <code>winbind.conf</code> Resides</h2>
-            <p>
-                All options are DISABLED or set to OS defaults by default. You need to
-                edit <code>winbind.conf</code> to personalise and use the application
-                to its maximum benefit. The file resides in the same directory as
-                <code>WinBind.exe</code>.
-            </p>
-            <h2>With Great Power Comes Great Responsibility</h2>
-            <p>
-                If not handled carefully, this app CAN cause temporary issues,
-                ultimately forcing you to disable it in Safe Mode. The following
-                option is blocked for a reason:
-            </p>
-            <pre><code>Allow_Bad_Keys = Disabled</code></pre>
-            <p>
-                I do <strong>not</strong> recommend switching this on unless you
-                really know what you are doing.
-            </p>
-            <h3>Blocked System Shortcuts</h3>
-            <p>
-                The following shortcuts are blocked by default to prevent OS conflicts:
-            </p>
-            <pre><code>CTRL+C/X/V/Z/Y/A/S/O/P/F/H/N/W/T
-ALT+F4/TAB/ESC/SPACE/ENTER
-WIN+D/E/I/L/R/V/TAB/SPACE/PAUSE
-WIN+A/B/G/H/K/M/O/P/S/T/U/W/X/Z
-WIN+LEFT/RIGHT/UP/DOWN
-WIN+SHIFT+S
-CTRL+ALT+DEL
-CTRL+SHIFT+ESC</code></pre>
-            <p>
-                This is an exhaustive list to prevent the user from messing up the OS.
-            </p>
-            <h2>Config Format</h2>
-            <pre><code># Comments start with #
-FLAG_NAME = Enabled/Disabled
-MODIFIERS+KEY = ACTION [ARGUMENT]</code></pre>
-            <p>
-                The <code>.conf</code> file itself contains inline documentation for
-                every section. Read the comments carefully before editing.
-            </p>
-            <blockquote>
-                <strong>Next:</strong> Learn how to
-                <a href="#" onclick="navigate('making-keybinds')">make your own keybinds</a>.
-            </blockquote>
+            <h1>Editing Configuration file the right way</h1>
+            <p>Most of the people will not even know there was a *.config* file 🤣.
+            <br>
+            Ok, jokes apart, lets see how to edit the *.config*.</p>
+
+            <h2>Where winbind.conf resides</h2>
+            <p>It is very important to know where the <em>winbind.conf</em> is stored, or else it is of no use to use this application. ALL the options are DISABLED/Set to OS defaults. You need to make edits to the <em>winbind.conf</em>, in order to personalise as well as use the application to the maximum benfit.
+            <br><br>
+            It resides in:<br>
+            <code>TODO -> path</code></p>
+
+            <h2>With great power comes great responsibility</h2>
+            <p>It is true that, if not handled carefully, this app CAN cause temporary damage to your PC, ultimately forcing you to disable this program in the Safe Mode, though it doesn't require admin permissions(Till Now).
+            <br><br>
+            Let's learn few things we DON'T have to enable in the <em>winbind.conf</em>, and I recommend you NEVER do.
+            <br><br>
+            <code>Allow_Bad_Keys=Disabled</code>
+            <br><br>
+            I don't recommend you to switch this thing on. Especially if you DON'T know computers.
+            <br>
+            I have kept it anyway, if anyone feels adventureous...
+            <br><br>
+            Commands BLOCKED:<br>
+            <code>Blocked by default: CTRL+C/X/V/Z/Y/A/S/O/P/F/H/N/W/T, ALT+F4/TAB/ESC/SPACE/ENTER,WIN+D/E/I/L/R/V/TAB/SPACE/PAUSE/A/B/G/H/K/M/O/P/S/T/U/W/X/Z, WIN+LEFT/RIGHT/UP/DOWN, WIN+SHIFT+S, CTRL+ALT+DEL, CTRL+SHIFT+ESC</code>
+            <br><br>
+            It is a exaustive list, but it is to prevent the user from messing up with the Operating System</p>
+
+            <h2>Editing the configuration file</h2>
+            <p>Many things are already written in the configuration to prevent the user from messing up with the configuration. Seriously, the *.conf* is NOT a place to mess up, so there are MULTIPLE WARNINGS!
+            <br><br>
+            It is already written in the *.conf* what has to be done, example for the KeyBind <em>configuration</em>, it is given like this:<br><br>
+            <code>
+Format: MODIFIERS+KEY = ACTION [ARG]
+Modifiers: WIN, CTRL, ALT, SHIFT (combine with +)<br>
+Actions: SWITCH &lt;N&gt;   - Switch to virtual desktop N<br>
+          MOVE &lt;N&gt;     - Move foreground window to desktop N<br>
+          MOVE_SWITCH &lt;N&gt; - Move window AND switch to desktop N<br>
+Comments start with #
+            </code>
+            <br><br>
+            This will be written in the *.conf*, but don't worry, if you have questions/doubts, I am also going to explain in EACH section wether it be Control/Personlization, I am going to guide you to make the *.conf* program.</p>
+
+            <div align="right"><a href="#" onclick="navigate('making-keybinds')">Next -> Tweaking With KeyBinds</a></div>
         `,
 
         'making-keybinds': `
-            <h1>Making Your Own Custom Keybind</h1>
-            <p>
-                I am 99% sure you would now like to make your own keybinds! Let me
-                guide you step by step to edit <code>winbind.conf</code> for creating
-                keybinds.
-            </p>
-            <h2>Pre-existing Functions</h2>
+            <h1>Making your OWN custom keybind</h1>
+            <p>I am 99% sure that you would now like to make your own keybinds, probably with thoughts in your head what to make! I am going to guide you step by step to edit the <em>winbind.conf</em> for creating keybinds.</p>
+
+            <h2>Learning the pre-existing functions</h2>
             <pre><code>Format: MODIFIERS+KEY = ACTION [ARG]
 Modifiers: WIN, CTRL, ALT, SHIFT (combine with +)
+Actions: SWITCH &lt;N&gt;   - Switch to virtual desktop N
+MOVE &lt;N&gt;     - Move foreground window to desktop N
+MOVE_SWITCH &lt;N&gt; - Move window AND switch to desktop N
+SIMULATE_KEY[MODIFIERS+KEY] - Simulate keys
+RUN["app path", "arguments"] - Allows you to run an app using a shortcut with custom args</code></pre>
+            <p>This is also given in the *.conf* for any time reference.</p>
 
-Actions:
-  SWITCH &lt;N&gt;          - Switch to virtual desktop N
-  MOVE &lt;N&gt;            - Move foreground window to desktop N
-  MOVE_SWITCH &lt;N&gt;     - Move window AND switch to desktop N
-  SIMULATE_KEY[MODIFIERS+KEY] - Simulate keys
-  RUN["app", "args"]  - Launch an application</code></pre>
-
-            <h2>Using Pre-existing Functions</h2>
-            <p>
-                When you open the <code>.conf</code>, you will see three implemented
-                functions, but DISABLED:
-            </p>
-            <pre><code>Virtual_Desktop_Switch = Disabled
-New_Desktop_Creation  = Disabled
-Auto_Remove_Virtual_Desktop = Disabled</code></pre>
-            <p>
-                Enable the ones you want, then configure the keybinds below them:
-            </p>
+            <h2>Using the pre-existing functions</h2>
+            <p>When you open the *.conf*, you will see three implemented functions, but DISABLED.</p>
+            <pre><code>Virtual_Desktop_Switch=Disabled
+New_Desktop_Creation=Disabled
+Auto_Remove_Virtual_Desktop=Disabled</code></pre>
+            <p>Well, these are for YOU to enable, it is completely your choice. No stress.</p>
+            <p>Well if you enable, and see the next few lines, you will notice this:</p>
             <pre><code>WIN+1 = SWITCH 1
 WIN+2 = SWITCH 2
-...
-WIN+SHIFT+1 = MOVE_SWITCH 1
+WIN+3 = SWITCH 3
+WIN+4 = SWITCH 4
+WIN+5 = SWITCH 5
+WIN+6 = SWITCH 6
+WIN+7 = SWITCH 7
+WIN+8 = SWITCH 8
+WIN+9 = SWITCH 9</code></pre>
+            <p>This is the key for switching from one virtual desktop to another.</p>
+            <p>You can edit it, keeping in mind the Important Notes to not conflict with the OS.</p>
+            <p>You will also see this when you scroll down:</p>
+            <pre><code>Window_And_Virtual_Desktop_Switch=Disabled</code></pre>
+            <p>Enable this to have Window+Desktop Switch at the same time(keep reading to check the explanation out{if you didn't understand}).</p>
+            <p>Here are the list of keybinds you will see on the screen:</p>
+            <pre><code>WIN+SHIFT+1 = MOVE_SWITCH 1
 WIN+SHIFT+2 = MOVE_SWITCH 2
-...</code></pre>
+WIN+SHIFT+3 = MOVE_SWITCH 3
+WIN+SHIFT+4 = MOVE_SWITCH 4
+WIN+SHIFT+5 = MOVE_SWITCH 5
+WIN+SHIFT+6 = MOVE_SWITCH 6
+WIN+SHIFT+7 = MOVE_SWITCH 7
+WIN+SHIFT+8 = MOVE_SWITCH 8
+WIN+SHIFT+9 = MOVE_SWITCH 9</code></pre>
+            <p>This is to MOVE the window WITH moving the Virtual Desktop.</p>
+            <p>Imagine, you are on VD2, and you want to switch the window to VD3, and go to VD3 at the same time. Now the shortcut would make sense to you!</p>
+            <p>You can edit these at your wish, like from WIN+SHIFT+2, you can edit to, WIN+CTRL+2, etc.</p>
 
-            <h2>Making Your Own Keybinds</h2>
-            <p>An example has been commented in the config to illustrate the syntax:</p>
+            <h2>Making your own keybinds</h2>
+            <p>I think it would be your most favorite section over here, making your own keybinds!</p>
+            <p>An example has been commented, to illustrate how to use the keybinds:</p>
             <pre><code>CTRL+SHIFT+V = SIMULATE_KEY[CTRL+V]</code></pre>
-            <p>
-                This makes <kbd>Ctrl+Shift+V</kbd> act as <kbd>Ctrl+V</kbd> — useful
-                if you are used to Linux paste behaviour.
-            </p>
-            <p>Launch applications with a shortcut:</p>
-            <pre><code>CTRL+SHIFT+P = RUN("notepad.exe", "C:\\log.txt")</code></pre>
-            <p>
-                This runs <code>notepad.exe</code> with <code>C:\\log.txt</code> as
-                the argument. Works for executables, batch scripts, or documents.
-            </p>
-
-            <h2>Loading Other .conf Files</h2>
-            <p>
-                You can load different configurations on the fly:
-            </p>
-            <pre><code>CTRL+SHIFT+W = LoadConf["gaming.conf"]</code></pre>
-            <p>
-                Create multiple <code>.conf</code> files (e.g. <code>gaming.conf</code>,
-                <code>focus.conf</code>) and switch between them instantly.
-            </p>
+            <p>Well, this examle shows you to add your own keybind for doing another key simulation.</p>
+            <p>Lets say, your a linux user. You keep doing <kbd>CTRL+SHIFT+V</kbd>, instead of <kbd>CTRL+V</kbd>. You want, whenever <kbd>CTRL+SHIFT+V</kbd> is pressed, the command actually simulates to the system to believe that you presses <kbd>CTRL+V</kbd>.</p>
             <blockquote>
-                <strong>Next:</strong> Learn about
-                <a href="#" onclick="navigate('transparency')">window transparency</a>.
+                Some keys you simulate, like <kbd>CTRL+SHIFT+V</kbd> are maybe taken by an Application and the app would not allow you to send <kbd>CTRL+SHIFT+V</kbd> to the app. It will only send <kbd>CTRL+V</kbd>(There is a workaround this problem, disable the app temorarly using a custom shortcut and start it back again when needed or just remove the simulation).
             </blockquote>
+            <p>There is one more too!</p>
+            <p>Wouldn't it be nice to start APPLICATIONS by mere shortcuts? Or run .bat scripts? That's what I thought and created this example:</p>
+            <pre><code>CTRL+SHIFT+P = RUN('vscode.exe', '--safe-mode')</code></pre>
+            <p>This allows you to run apps OR batch scripts with ARGUMENTS and with CUSTOM shortcuts. Sometimes, even I wonder how good can the application be! It is LOVELY to have this kind of feature! It saves me time too everyday!</p>
+
+            <h2>Loading other *.conf* files with a shortcut</h2>
+            <p>Yes, you can now load *.conf* files. There is a file called <em>base.conf</em>. All of the features are disabled for now, but you can modify the file to what you want and then save it as <em>gaming.conf</em> or <em>focus.conf</em> and then use shortcuts to run it.</p>
+            <p>Still didn't understand?</p>
+            <p>Let me show you a example - <br>
+            <code>CTRL + SHIFT + W = LoadConf["gaming.conf"]</code> <br><br>
+            Now this would load the custom configuration <em>gaming.conf</em> when you press <kbd> CTRL + SHIFT + W</kbd>.
+            <br>
+            It is <b>that <em>simple</em></b>.</p>
+            <p>Now it is time for another cool feature! Transparency to the Windows, with adjustable opacity!</p>
+            <div align="right"><a href="#" onclick="navigate('transparency')">Next -> Transparency.md</a></div>
         `,
 
         transparency: `
-            <h1>Make Windows Transparent</h1>
-            <p>
-                Yes, make your windows transparent! Don't let them be a block of ice.
-                In WinBind it is just 3 edits (max) away.
-            </p>
-            <h2>Functions</h2>
-            <pre><code>Transparency = Enable/Disable
-Transparency_Delay = Time_Delay (preferably in s)
-Opacity = Percent_Value (include %)</code></pre>
+            <h1>Make Windows Transparent!</h1>
+            <p>Yes, make your windows transparent! Don't let it be a block of ice. In WinBind, you would find it really easy to configure transparency. It is just 3 edits (max) away.</p>
 
-            <h2>Enable Transparency</h2>
-            <p>Change:</p>
-            <pre><code>Transparency = Disabled</code></pre>
-            <p>to:</p>
-            <pre><code>Transparency = Enabled</code></pre>
+            <h2>Learning the functions</h2>
+            <pre><code>Actions:
+Transparency = Enable/Disable
+Transparency_Delay = Time_Delay(preferably in s)
+Opacity = Percent_Value(include %)</code></pre>
+            <p>This is already given in the *.conf* file for anytime reference.</p>
 
-            <h2>Change Opacity</h2>
-            <p>Change:</p>
-            <pre><code>Opacity = 100%</code></pre>
-            <p>to whatever percentage you like, e.g.:</p>
-            <pre><code>Opacity = 75%</code></pre>
+            <h2>How to enable transparency</h2>
+            <p>Just change:
+            <code>Transparency = Disabled</code> to <code>Transparency = Enabled</code>.</p>
+            <p>This will allow the program to set up transparency for windows.</p>
+            <p>But wait. You have forgot to set the transparency!</p>
+            <p>If you don't, then the windows will stay 100% opaque.</p>
+            <p>Lets learn how to enable.</p>
 
-            <h2>Delay Time</h2>
-            <p>
-                The delay controls how often the program scans windows and applies
-                transparency. Higher delay = lower CPU/RAM usage.
-            </p>
-            <pre><code>Transparency_Delay = 1s</code></pre>
+            <h2>How to change opacity</h2>
+            <p>Just change:
+            <code>Opacity = 100%</code> to <code>Opacity = (whatever percentage)%</code>. That's it.</p>
+
+            <h2>Change the delay time</h2>
+            <p>Delay time is what you can say <em>refresh rate</em>. It is the time when the program makes a delay before eyeing all windows and applying the style.
+            More the delay, lesser the consumption of CPU and RAM.</p>
+            <p>The default is:
+            <code>Transparency_Delay = 1s</code></p>
+            <p>Feel free to edit and change it to a higher value or a lower value.</p>
 
             <h2>Exclusions</h2>
-            <p>Prevent certain applications from being made transparent:</p>
-            <pre><code>TransparencyExclusion = ["explorer.exe", "ShellHost.exe"]</code></pre>
-            <p>Add or remove entries as needed.</p>
-            <blockquote>
-                <strong>Next:</strong> Check out the
-                <a href="#" onclick="navigate('window-styler')">Window Styler</a> to
-                customise window borders and title bars.
-            </blockquote>
+            <p>Let's say you have a game. You don't want to make it transparent. You can add this to the exclusion list: thoughtfully designed to solve this major problem.</p>
+            <p>For now, default is:
+            <code>TransparencyExclusion = ["explorer.exe", "ShellHost.exe"]</code></p>
+            <p>Feel free to remove or add.</p>
+            <hr>
+            <p>There are more suprises yet to come! We will now see WindowStyler to style windows to your preference. Exciting right? Keep up with the documentation!</p>
+            <div align="right"><a href="#" onclick="navigate('window-styler')">Next -> WindowStyler.md</a></div>
         `,
 
         'window-styler': `
             <h1>Window Styler</h1>
-            <p>
-                You work with various kinds of windows every day. WinBind can style
-                them to your preference — borders, title bars, backdrops, and more.
-            </p>
-            <h2>Functions</h2>
-            <pre><code>StealFocus = Enabled/Disabled       (auto-focus like Linux)
-ChangeBorderColor = [R,G,B]         (0-255 each)
-ChangeTitleBarColor = [R,G,B]       (0-255 each)
+            <p>You work with various kinds of windows, everyday.
+            A window is basically the browser you view this content on. Any app that is not hidden and visible on the desktop is a window.</p>
+            <p>Unfortunately, this app is not a window 🤣. It silently runs in the background. However, it can style your other windows.</p>
+
+            <h2>Learning the functions</h2>
+            <p>Here are some actions for customizing the window:</p>
+            <pre><code>StealFocus = Enabled/Disabled (hover = auto-focus, like Linux)
+
+ChangeBorderColor = [R,G,B]  (0-255 each, e.g. [255,0,0] = red)
+
+ChangeTitleBarColor = [R,G,B] (0-255 each)
+
 DarkModeTitleBar = Enabled/Disabled
-SystemBackdrop = 1/2/3/4            (1=Auto, 2=None, 3=Mica, 4=Acrylic)
-WindowStyler_Delay = Time            (e.g. 2s, 1000ms)</code></pre>
 
-            <h2>Steal Focus</h2>
-            <p>
-                Hover over a window to auto-focus it — much like Linux. No clicking
-                needed.
-            </p>
-            <pre><code>StealFocus = Enabled</code></pre>
+SystemBackdrop = 1/2/3/4  (1=Auto, 2=None, 3=Mica, 4=Acrylic)
 
-            <h2>Border Color</h2>
-            <p>
-                Change the grey border that appears on floating (non-maximized) windows
-                to any RGB color:
-            </p>
-            <pre><code>ChangeBorderColor = [0,100,255]
-ChangeBorderColorExclusion = []</code></pre>
+WindowStyler_Delay = Time (e.g. 2s, 1000ms, 3000)</code></pre>
 
-            <h2>Title Bar Color</h2>
-            <pre><code>ChangeTitleBarColor = [50,50,50]
-ChangeTitleBarColorExclusion = []</code></pre>
+            <h2>Enabling the StealFocus</h2>
+            <p>What is StealFocus? Why to use them at all? This are the questions I would be asked by you.</p>
+            <p>Actually, it is very simple. Imagine you have 2 windows, stacked split screen. Now you work on App1 and suddenly change to App2. Now the OS would require you to click App2 before it emerging in focus. This will allow you to activate a window WITHOUT clicking, much like Linux.</p>
+            <p>You would want to use this if you keep changing the location of the cursor from one window to other, and don't want to waste the time in clicking.</p>
+            <p>Here is how to enable: <pre><code>StealFocus = Enabled</code></pre></p>
+            <p>That's it.</p>
+
+            <h2>Changing the border color</h2>
+            <p>Border is the grey line that runs at the sides and corners of your window, whenever it floats(not maximized).</p>
+            <p>The color is a RGB value(hope you know that).</p>
+            <p>Use: <kbd>ChangeBorderColor = [0,100,255]</kbd> to change the color.</p>
+            <p>The actual implementation is: <kbd>ChangeBorderColor = [R,G,B]</kbd>. Feel free to use this site <a href="https://rgbcolorpicker.com/" target="_blank">https://rgbcolorpicker.com/</a> so that you can easily pick the color, with having the translated values.</p>
+            <p>Set an exclusion to an application you don't want to have the border color.</p>
+            <p>Use: <kbd>ChangeBorderColorExclusion = []</kbd> (Hint: Remmber the translucentcy Exclusion? Use the same concept.)</p>
+
+            <h2>Changing the title bar color</h2>
+            <p>I think everyone knows what a title bar is.</p>
+            <p>Use: <kbd>ChangeTitleBarColor = [50,50,50]</kbd></p>
+            <p>Again the values have to be in RGB, the same site can be referred.</p>
+            <p>Again for exclusion use: <kbd>ChangeTitleBarColorExclusion = []</kbd></p>
 
             <h2>Dark Mode Title Bar</h2>
-            <p>
-                Forces dark title bars on Win32 apps (white text, dark background):
-            </p>
-            <pre><code>DarkModeTitleBar = Enabled
-DarkModeTitleBarExclusion = []</code></pre>
+            <p>Changes the title bar of apps to dark black. Ex: Many app popups are often coded in Win32, so it changes their title bar white text and dark bar.</p>
+            <p>Use: <kbd>DarkModeTitleBar = Enabled</kbd></p>
+            <p>Again use <kbd>ChangeDarkModeTitleBarExclusion = []</kbd> for exclusions.</p>
 
-            <h2>System Backdrop</h2>
-            <ul>
-                <li><strong>1 = Auto</strong> — Let Windows decide (usually no effect)</li>
-                <li><strong>2 = None</strong> — No backdrop</li>
-                <li><strong>3 = Mica</strong> — Slight blur effect</li>
-                <li><strong>4 = Acrylic</strong> — More solid than Mica</li>
-            </ul>
-            <pre><code>SystemBackdrop = 3
-SystemBackdropExclusion = []</code></pre>
+            <h2>Changing the system backdrop</h2>
+            <p>Sometimes the application can make all eligible apps change their title bar/window to a system backdrop.</p>
+            <p>1 = Auto (let Windows decide) - Usually this will not give the desired result. Windows doesn't do anything much here.</p>
+            <p>2 = None - Have NO systembackdrop</p>
+            <p>3 = Mica - For having slight blur effect known as mica.</p>
+            <p>4 = Acrylic - More solid than mica. Useful in some cases</p>
+            <p>Set it up like: <kbd>SystemBackdrop = 3</kbd></p>
+            <p>To exclude an app use: <kbd>SystemBackdropExclusion = []</kbd></p>
 
-            <h2>Delay Time</h2>
-            <p>Controls how often the styler scans and applies settings:</p>
-            <pre><code>WindowStyler_Delay = 500ms</code></pre>
+            <h2>Delay time</h2>
+            <p>Like Translucentcy program, you have an option to set how much delay you want. Lesser the delay, lesser the time the application takes to style the window.</p>
+            <p>Use: <kbd>WindowStyler_Delay = 500ms</kbd></p>
+            <hr>
+            <p>I am sure, if you paid close attention, your windows would look better then anyone else's. Anyway, we are still on the trip. It's not over. The best features are yet to come. Want to set up a soft music in the background? Don't worry, I have got you covered! Keep reading!</p>
+            <div align="right"><a href="#" onclick="navigate('dev-overview')">Next -> BackgroundMusic.md</a></div>
         `,
 
         'dev-overview': `
-            <h1>Project Overview</h1>
-            <p>
-                WinBind is a <strong>Windows utility</strong> that runs in the
-                background. It listens for keyboard shortcuts and performs actions
-                like switching virtual desktops, moving windows, simulating keypresses,
-                and applying transparency.
-            </p>
-            <p>
-                It uses <strong>NO admin rights</strong>. Everything is done with
-                user-mode Windows APIs.
-            </p>
-        `,
+            <h1>WinBind — Complete Developer Guide</h1>
+            <blockquote><strong>Who is this for?</strong> Anyone who wants to understand, modify, or extend WinBind. Every function, every variable, every trick.</blockquote>
+            <hr>
 
-        'dev-arch': `
-            <h1>Architecture</h1>
-            <p>WinBind is built around a small core with these layers:</p>
+            <h2>1. Project Overview</h2>
+            <p>WinBind is a <strong>Windows utility</strong> that runs in the background. It:</p>
             <ul>
-                <li><strong>Event Source Layer</strong> — captures raw OS events via a low-level keyboard hook</li>
-                <li><strong>Binding Layer</strong> — matches events to registered bindings</li>
-                <li><strong>Action Layer</strong> — dispatches commands to handlers (desktop switch, key simulation, etc.)</li>
+                <li>Listens for <strong>keyboard shortcuts</strong> (like <kbd>WIN+1</kbd>, <kbd>CTRL+SHIFT+C</kbd>)</li>
+                <li>When you press a shortcut, it does something:
+                    <ul>
+                        <li><strong>Switches</strong> to a different virtual desktop</li>
+                        <li><strong>Moves</strong> the current window to another desktop</li>
+                        <li><strong>Simulates</strong> a different keypress (like making <kbd>CTRL+SHIFT+V</kbd> act as <kbd>CTRL+V</kbd>)</li>
+                    </ul>
+                </li>
+                <li>Also applies <strong>window transparency</strong> (makes windows see-through) at a set interval</li>
             </ul>
-            <p>
-                The program uses a <strong>hidden window</strong> and a
-                <strong>message loop</strong> to process actions outside the hook
-                callback (since <code>SendInput</code> cannot be called from within
-                a hook).
-            </p>
+            <p>It uses <strong>NO admin rights</strong>. Everything is done with user-mode Windows APIs.</p>
+            <hr>
         `,
 
         'dev-files': `
-            <h1>File Structure</h1>
+            <h1>2. File Structure</h1>
             <pre><code>WinBind/
 ├── main.cpp              # Entry point — starts the program
-├── keybinder.h           # Declarations — classes, structs, constants
+├── keybinder.h           # Declarations — tells what exists
 ├── keybinder.cpp         # Main logic — hook, switching, COM
 ├── Transparency.h        # Transparency declarations
 ├── Transparency.cpp      # Transparency implementation
 ├── winbind.conf          # User configuration (text file)
-├── build.bat             # Compiler command
-├── WinBind.exe           # Compiled program
+├── build.bat             # How to compile
+├── run.bat               # How to run (outdated)
+├── WinBind.exe           # The compiled program
 └── docs/                 # Documentation</code></pre>
+            <h3>What each file does:</h3>
             <table>
                 <tr><th>File</th><th>Purpose</th></tr>
-                <tr><td><code>main.cpp</code></td><td>The start button. Creates a hidden window, loads config, starts listening.</td></tr>
-                <tr><td><code>keybinder.h</code></td><td>The table of contents. Tells what classes, functions, and variables exist.</td></tr>
-                <tr><td><code>keybinder.cpp</code></td><td>The engine. All the real work happens here.</td></tr>
-                <tr><td><code>Transparency.h/.cpp</code></td><td>How transparency actually works.</td></tr>
-                <tr><td><code>winbind.conf</code></td><td>The settings file users edit.</td></tr>
-                <tr><td><code>build.bat</code></td><td>Compiles source code into <code>.exe</code>.</td></tr>
+                <tr><td><code>main.cpp</code></td><td>The <strong>start</strong> button. Creates a hidden window, loads config, starts listening.</td></tr>
+                <tr><td><code>keybinder.h</code></td><td>The <strong>table of contents</strong>. Tells what classes, functions, and variables exist.</td></tr>
+                <tr><td><code>keybinder.cpp</code></td><td>The <strong>engine</strong>. All the real work happens here.</td></tr>
+                <tr><td><code>Transparency.h</code></td><td>Tells what transparency functions exist.</td></tr>
+                <tr><td><code>Transparency.cpp</code></td><td>How transparency actually works.</td></tr>
+                <tr><td><code>winbind.conf</code></td><td>The <strong>settings file</strong> users edit.</td></tr>
+                <tr><td><code>build.bat</code></td><td>The <strong>compiler command</strong> — turns source code into <code>.exe</code>.</td></tr>
             </table>
+            <hr>
         `,
 
         'dev-entrypoint': `
-            <h1>Entry Point — How WinBind Starts</h1>
-            <p><strong>File:</strong> <code>main.cpp</code> — Function: <code>WinMain</code></p>
-            <p>Every Windows program starts at <code>WinMain</code>. Here is the flow:</p>
-            <pre><code>int WINAPI WinMain(HINSTANCE hInst, ...) {
-    // 1. Get the singleton Keybinder
-    Keybinder& kb = Keybinder::Instance();
+            <h1>3. How WinBind Starts (Entry Point)</h1>
+            <p><strong>File:</strong> <code>main.cpp:25</code> — Function: <code>WinMain</code></p>
+            <p>Every Windows program starts at <code>WinMain</code>. Think of it as <code>main()</code> in other languages.</p>
 
-    // 2. Check for --config flag, load config
-    kb.LoadConfig(configPath);
+            <h3>Step-by-step:</h3>
+            <pre><code>int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int) {</code></pre>
+            <p><code>HINSTANCE hInst</code> — a handle to the program itself. Windows gives it to you, you pass it along.</p>
+            <pre><code>Keybinder& kb = Keybinder::Instance();</code></pre>
+            <p>Gets the <strong>single, one-and-only</strong> Keybinder object. This is called a <strong>singleton</strong> — there can only ever be one.</p>
+            <pre><code>const char* configPath = "winbind.conf";
+const char* cmdLine = GetCommandLineA();
+const char* flag = strstr(cmdLine, "--config");
+if (flag) {
+    const char* val = flag + 8;
+    while (*val == ' ' || *val == '=') val++;
+    if (*val) configPath = val;
+}</code></pre>
+            <p>This checks if the user ran WinBind with a custom config path:</p>
+            <pre><code>WinBind.exe --config "C:\\my_settings.conf"</code></pre>
+            <p>If they didn't, it uses <code>winbind.conf</code> in the current folder.</p>
+            <pre><code>kb.LoadConfig(configPath);</code></pre>
+            <p>Reads the config file and remembers all the keybinds.</p>
+            <pre><code>WNDCLASSEXW wc = { sizeof(wc) };
+wc.lpfnWndProc = WndProc;        // Window's "brain" — handles messages
+wc.hInstance = hInst;
+wc.lpszClassName = L"KeybinderHiddenWnd";
+RegisterClassExW(&wc);
 
-    // 3. Create a hidden window (mailbox for messages)
-    HWND hWnd = CreateWindowExW(..., HWND_MESSAGE, ...);
-    kb.SetWindowHandle(hWnd);
+HWND hWnd = CreateWindowExW(0, L"KeybinderHiddenWnd", L"", 0, 0, 0, 0, 0,
+    HWND_MESSAGE, NULL, hInst, NULL);</code></pre>
+            <p>This creates a <strong>hidden window</strong> — it doesn't appear on your screen or taskbar. It's just a mailbox for messages.</p>
+            <p><code>HWND_MESSAGE</code> is the magic flag that makes it invisible.</p>
+            <pre><code>kb.SetWindowHandle(hWnd);</code></pre>
+            <p>Tells the Keybinder: "Here is the mailbox. Post messages here."</p>
+            <pre><code>if (!kb.Init()) return 1;</code></pre>
+            <p>Sets up the keyboard hook (starts listening) and COM (talks to Windows desktop APIs).</p>
+            <pre><code>int delayMs = LoadTransparencyDelayMs();
+SetTimer(hWnd, TIMER_TRANSPARENCY, delayMs, NULL);</code></pre>
+            <p>Starts a timer. Every <code>delayMs</code> milliseconds (1000ms = 1 second by default), the window gets a "time to apply transparency" message.</p>
+            <pre><code>MSG msg;
+while (GetMessage(&msg, NULL, 0, 0)) {
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
+}</code></pre>
+            <p><strong>The message loop.</strong> This runs forever while the program is alive. It waits for messages (keyboard hooks, timer ticks) and sends them to <code>WndProc</code> to handle.</p>
+            <pre><code>kb.Stop();
+return 0;</code></pre>
+            <p>When the program finally receives a <code>WM_QUIT</code> message, it cleans up and exits.</p>
+            <hr>
 
-    // 4. Start keyboard hook and COM
-    if (!kb.Init()) return 1;
+            <h2>4. The Hidden Window &amp; Message Loop</h2>
+            <p><strong>File:</strong> <code>main.cpp:11</code> — Function: <code>WndProc</code></p>
+            <p>This is the "brain" of the hidden window. When something happens (a keybind matches, the timer ticks), this function gets called.</p>
+            <pre><code>static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {</code></pre>
+            <p>Parameters:
+            <ul>
+                <li><code>hWnd</code> — which window received the message (we only have one)</li>
+                <li><code>msg</code> — <strong>what happened</strong> (a number that means something)</li>
+                <li><code>wParam</code>, <code>lParam</code> — <strong>details</strong> about what happened</li>
+            </ul></p>
 
-    // 5. Start transparency timer
-    SetTimer(hWnd, TIMER_TRANSPARENCY, delayMs, NULL);
-
-    // 6. Message loop — runs forever
-    MSG msg;
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
-    // 7. Clean up
-    kb.Stop();
+            <h3>Message 1: Keybind Match (<code>WM_KB_EXECUTE</code>)</h3>
+            <pre><code>if (msg == WM_KB_EXECUTE) {
+    Keybinder::Instance().ExecuteQueuedAction((int)wParam);
     return 0;
 }</code></pre>
-            <h2>The Hidden Window & Message Loop</h2>
-            <p>
-                The hidden window (<code>HWND_MESSAGE</code>) never appears on screen.
-                It receives:
-            </p>
-            <ul>
-                <li><strong>WM_KB_EXECUTE</strong> — when a keybind matches, the hook posts this message</li>
-                <li><strong>WM_TIMER</strong> — timer tick for transparency</li>
-            </ul>
+            <p>When a keybind matches, the keyboard hook posts <code>WM_KB_EXECUTE</code> to this window. <code>wParam</code> is the <strong>index number</strong> of the binding (0 = first binding, 1 = second, etc.).</p>
+            <p>Why do it this way? Because Windows doesn't allow <code>SendInput</code> (simulating keys) inside a keyboard hook callback. So the hook says "hey, do this later" by posting a message.</p>
+
+            <h3>Message 2: Timer Tick (<code>WM_TIMER</code>)</h3>
+            <pre><code>if (msg == WM_TIMER && wParam == TIMER_TRANSPARENCY) {
+    int opacity = LoadTransparencyConfig();
+    if (opacity > 0 && opacity < 100)
+        EnumWindows(EnumWindowsProc, (LPARAM)opacity);
+    return 0;
+}</code></pre>
+            <p>Every <code>Transparency_Delay</code> milliseconds, this runs. It re-reads the config (so you can change opacity without restarting), then goes through every window on screen and applies transparency.</p>
+
+            <h3>Message 3: Everything Else</h3>
+            <pre><code>return DefWindowProc(hWnd, msg, wParam, lParam);</code></pre>
+            <p>If it's not a message we care about, let Windows handle it normally.</p>
+            <hr>
         `,
 
         'dev-hook': `
-            <h1>Keyboard Hook</h1>
-            <p><strong>File:</strong> <code>keybinder.cpp</code> — <code>KeyboardProc</code></p>
-            <p>
-                A low-level keyboard hook (<code>WH_KEYBOARD_LL</code>) fires for
-                <strong>every keystroke</strong> on the entire system.
-            </p>
+            <h1>5. The Keyboard Hook</h1>
+            <p><strong>File:</strong> <code>keybinder.cpp:601</code> — Function: <code>KeyboardProc</code> (static)</p>
             <pre><code>LRESULT CALLBACK Keybinder::KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
     if (nCode == HC_ACTION && Instance().HandleKeyEvent(wParam, lParam) == 1)
-        return 1;  // Block the key
-    return CallNextHookEx(NULL, nCode, wParam, lParam);  // Let it through
+        return 1;
+    return CallNextHookEx(NULL, nCode, wParam, lParam);
 }</code></pre>
-            <h2>HandleKeyEvent Logic</h2>
+            <p>This is a <strong>low-level keyboard hook</strong> (<code>WH_KEYBOARD_LL</code>). It fires for <strong>every keystroke</strong> on the entire system — in any app.</p>
+            <ul>
+                <li>If <code>HandleKeyEvent</code> returns <code>1</code>, the key is <strong>blocked</strong> (swallowed, never reaches the app).</li>
+                <li>If <code>HandleKeyEvent</code> returns <code>0</code>, the key passes through normally.</li>
+            </ul>
+
+            <h3>The Real Logic: <code>HandleKeyEvent</code></h3>
+            <p><strong>File:</strong> <code>keybinder.cpp:607</code> — Function: <code>HandleKeyEvent</code></p>
+            <pre><code>LRESULT Keybinder::HandleKeyEvent(WPARAM wParam, LPARAM lParam) {
+    KBDLLHOOKSTRUCT* pKb = (KBDLLHOOKSTRUCT*)lParam;
+    DWORD vk = pKb->vkCode;
+    bool down = (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN);</code></pre>
+            <p><code>KBDLLHOOKSTRUCT</code> contains details about the keypress: <strong>which key</strong> (<code>vkCode</code>) and <strong>whether it was pressed or released</strong> (<code>wParam</code>).</p>
+
+            <h4>Step 1: Track Modifier Keys</h4>
+            <pre><code>DWORD mb = 0;
+switch (vk) {
+    case VK_LWIN: case VK_RWIN:   mb = MODB_WIN;   break;
+    case VK_LCONTROL: case VK_RCONTROL: mb = MODB_CTRL; break;
+    case VK_LMENU: case VK_RMENU: mb = MODB_ALT;   break;
+    case VK_LSHIFT: case VK_RSHIFT: mb = MODB_SHIFT; break;
+}
+if (mb) { m_modsTracked = down ? (m_modsTracked | mb) : (m_modsTracked & ~mb); return 0; }</code></pre>
+            <p>If you pressed <strong>Win</strong>, <strong>Ctrl</strong>, <strong>Alt</strong>, or <strong>Shift</strong>, it updates <code>m_modsTracked</code> (a bitmask remembering which modifiers are held). Then it returns <code>0</code> (don't block the key — let it pass through).</p>
+
+            <h4>Step 2: If <code>m_busy</code>, Block Real Keys</h4>
+            <pre><code>if (m_busy) return (pKb->flags & (LLKHF_INJECTED | 0x02)) ? 0 : 1;</code></pre>
+            <p>While an action is running (e.g., switching desktops), <strong>block all real keys</strong> to prevent interference. But allow injected keys (keys that WinBind itself is simulating) through.</p>
+
+            <h4>Step 3: If <code>m_simulating</code>, Skip Everything</h4>
+            <pre><code>if (m_simulating) return 0;</code></pre>
+            <p>While WinBind is in the middle of <code>SendInput</code> (simulating keystrokes), don't try to match bindings — that would cause an infinite loop.</p>
+
+            <h4>Step 4: Check if Config Changed</h4>
+            <pre><code>CheckConfigChanged();
+if (!m_enabled) return 0;</code></pre>
+            <p>On every keystroke, check if <code>winbind.conf</code> was modified. If so, reload it. If virtual desktop switching is disabled, stop here.</p>
+
+            <h4>Step 5: Match Against Bindings</h4>
+            <pre><code>for (size_t i = 0; i < m_bindings.size(); i++)
+    if (m_bindings[i].vkCode == vk && m_bindings[i].modifiers == m_modsTracked) {
+        if (m_hWnd) PostMessage(m_hWnd, WM_KB_EXECUTE, i, 0);
+        return 1;
+    }
+return 0;</code></pre>
+            <p>Go through every binding. If the pressed key AND the currently-held modifiers match a binding:
             <ol>
-                <li><strong>Track modifier keys</strong> (Win, Ctrl, Alt, Shift) — update bitmask</li>
-                <li><strong>Check m_busy</strong> — block real keys while action is running</li>
-                <li><strong>Check m_simulating</strong> — skip injected keys to prevent loops</li>
-                <li><strong>Check config changes</strong> — reload if file was modified</li>
-                <li><strong>Match bindings</strong> — if key+modifiers match, post execute message and block key</li>
-            </ol>
+                <li>Post a message to the hidden window: "execute binding number <code>i</code>"</li>
+                <li>Return <code>1</code> — <strong>block</strong> the key (the user doesn't need the original key to reach the app)</li>
+            </ol></p>
+            <p>If nothing matches, return <code>0</code> — let the key through.</p>
+            <hr>
         `,
 
         'dev-config': `
-            <h1>Config Loading</h1>
-            <p><strong>File:</strong> <code>keybinder.cpp</code> — <code>LoadConfig</code></p>
-            <p>The config file (<code>winbind.conf</code>) is parsed line by line.</p>
-            <h2>Format</h2>
+            <h1>6. Config Loading</h1>
+            <p><strong>File:</strong> <code>keybinder.cpp:697</code> — Function: <code>LoadConfig</code></p>
+            <p>This reads <code>winbind.conf</code> line by line.</p>
+
+            <h3>The Config Format</h3>
             <pre><code># Comments start with #
 FLAG_NAME = Enabled/Disabled
 MODIFIERS+KEY = ACTION [ARGUMENT]</code></pre>
-            <h2>Parsing Steps</h2>
-            <ol>
-                <li>Trim whitespace, skip blanks and comments</li>
-                <li>Split on <code>=</code> to get left-hand side and right-hand side</li>
-                <li>If LHS is a known flag name → set boolean flag</li>
-                <li>Otherwise parse as a keybinding: split LHS on <code>+</code> for modifiers + key, parse RHS for action + argument</li>
-            </ol>
-            <h3>Key Name Resolution</h3>
-            <p><code>KeyNameToVK</code> converts string names to Windows virtual-key codes:</p>
-            <pre><code>"A" → 0x41, "5" → 0x35
-"F1" → VK_F1, "LEFT" → VK_LEFT
-"SPACE" → VK_SPACE, "ENTER" → VK_RETURN</code></pre>
+
+            <h3>How Each Line is Parsed</h3>
+            <pre><code>std::ifstream file(path);
+std::string line;
+while (std::getline(file, line)) {
+    line = Trim(line);
+    if (line.empty() || line[0] == '#') continue;
+
+    size_t eq = line.find('=');
+    std::string lhs = Trim(line.substr(0, eq));
+    std::string rhs = Trim(line.substr(eq + 1));</code></pre>
+
+            <h3>Boolean Flags</h3>
+            <pre><code>auto parseBool = [&](bool& flag) {
+    std::string v = rhs;
+    std::transform(v.begin(), v.end(), v.begin(), ::tolower);
+    flag = (v == "enabled" || v == "1" || v == "true");
+};
+if (lhs == "Virtual_Desktop_Switch")   { parseBool(m_enabled); continue; }
+if (lhs == "New_Desktop_Creation")     { parseBool(m_newDesktopCreation); continue; }
+if (lhs == "Allow_Bad_Keys")           { parseBool(m_allowBadKeys); continue; }
+if (lhs == "Window_And_Virtual_Desktop_Switch") { parseBool(m_windowAndDesktopSwitch); continue; }
+if (lhs == "Auto_Remove_Virtual_Desktop") { parseBool(m_autoRemoveDesktop); continue; }</code></pre>
+            <p>If the left side is a known flag name, set the corresponding boolean.</p>
+
+            <h3>Key Bindings</h3>
+            <pre><code>std::istringstream rss(rhs);
+std::string act; int arg = 0;
+rss >> act;
+std::string as; if (rss >> as) arg = std::atoi(as.c_str());</code></pre>
+
+            <h3>Special Case: <code>SIMULATE_KEY[CTRL+V]</code></h3>
+            <pre><code>if (act.find("SIMULATE_KEY[") == 0 && act.back() == ']') {
+    std::string inner = act.substr(13, act.size() - 14);
+    act = "SIMULATE_KEY";
+}</code></pre>
+
+            <h3>Parsing the Left Side (Modifiers + Key)</h3>
+            <pre><code>DWORD mods = 0;
+std::string keyName;
+for (size_t sp = 0;;) {
+    size_t pp = lhs.find('+', sp);
+    std::string p = Trim(lhs.substr(sp, ...));
+    DWORD m = ParseModifier(p);
+    if (m) mods |= m;
+    else keyName = p;
+    if (pp == std::string::npos) break;
+    sp = pp + 1;
+}</code></pre>
+
+            <h3>Helper: <code>ParseModifier</code></h3>
+            <p><strong>File:</strong> <code>keybinder.cpp:170</code></p>
+            <pre><code>static DWORD ParseModifier(const std::string& s) {
+    std::string l = s;
+    std::transform(l.begin(), l.end(), l.begin(), ::tolower);
+    if (l == "win")   return MODB_WIN;
+    if (l == "ctrl")  return MODB_CTRL;
+    if (l == "alt")   return MODB_ALT;
+    if (l == "shift") return MODB_SHIFT;
+    return 0;
+}</code></pre>
+
+            <h3>Helper: <code>KeyNameToVK</code></h3>
+            <p>Converts a key name string to a Windows virtual-key code.</p>
+            <pre><code>DWORD Keybinder::KeyNameToVK(const std::string& name) {
+    std::string u = name;
+    std::transform(u.begin(), u.end(), u.begin(), ::toupper);
+    if (u.size() == 1) {
+        char c = u[0];
+        if ((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) return (DWORD)c;
+    }
+    struct { const char* n; DWORD v; } km[] = {
+        {"F1", VK_F1}, {"F2", VK_F2}, ..., {"LEFT", VK_LEFT},
+        {"RIGHT", VK_RIGHT}, {"SPACE", VK_SPACE}, {"ENTER", VK_RETURN},
+        {"TAB", VK_TAB}, {"ESC", VK_ESCAPE}, ...
+    };
+    for (size_t i = 0; i < sizeof(km)/sizeof(km[0]); i++)
+        if (u == km[i].n) return km[i].v;
+    return 0;
+}</code></pre>
+
             <h3>System Shortcut Blocklist</h3>
-            <p>
-                <code>IsSystemShortcut</code> checks ~40 dangerous combos. If a match
-                is found, the binding is rejected unless <code>Allow_Bad_Keys = Enabled</code>.
-            </p>
+            <p><strong>File:</strong> <code>keybinder.cpp:213</code> — Function: <code>IsSystemShortcut</code></p>
+            <p>Before adding a binding, WinBind checks if the shortcut is a <strong>dangerous system shortcut</strong>:</p>
+            <pre><code>static bool IsSystemShortcut(DWORD mods, DWORD vk) {
+    struct { DWORD m; DWORD v; } bad[] = {
+        {MODB_CTRL, 'C'}, {MODB_CTRL, 'X'},
+        {MODB_ALT, VK_F4},
+        {MODB_WIN, 'D'},
+        {MODB_CTRL|MODB_ALT, VK_DELETE},
+    };
+    for (size_t i = 0; i < sizeof(bad)/sizeof(bad[0]); i++)
+        if (bad[i].m == mods && bad[i].v == vk) return true;
+    return false;
+}</code></pre>
+            <p>If the user tries to bind <code>CTRL+C</code>, it's <strong>rejected</strong> unless <code>Allow_Bad_Keys=Enabled</code> is set.</p>
+
+            <h3>Helper: <code>Trim</code></h3>
+            <pre><code>static std::string Trim(const std::string& s) {
+    size_t a = s.find_first_not_of(" \\t\\r\\n");
+    size_t b = s.find_last_not_of(" \\t\\r\\n");
+    return (a == std::string::npos) ? "" : s.substr(a, b - a + 1);
+}</code></pre>
+            <p>Removes spaces, tabs, and newlines from both ends of a string. Every config line is trimmed before processing.</p>
+            <hr>
         `,
 
         'dev-actions': `
-            <h1>Actions</h1>
-            <p><strong>File:</strong> <code>keybinder.cpp</code> — <code>ExecuteAction</code></p>
-            <p>When a keybind matches, the action is dispatched:</p>
+            <h1>7. Actions</h1>
+            <p><strong>File:</strong> <code>keybinder.cpp:649</code> — Functions: <code>ExecuteQueuedAction</code>, <code>ExecuteAction</code></p>
+            <p>When a keybind matches, the message loop calls:</p>
+            <pre><code>void Keybinder::ExecuteQueuedAction(int bindingIndex) {
+    if (m_busy) return;
+    if (bindingIndex < 0 || bindingIndex >= (int)m_bindings.size()) return;
+    m_busy = true;
+    ExecuteAction(m_bindings[bindingIndex]);
+    m_busy = false;
+}</code></pre>
+            <p><code>ExecuteAction</code> then decides WHAT to do:</p>
             <pre><code>void Keybinder::ExecuteAction(const Keybinding& kb) {
     if (kb.action == "SWITCH") {
+        int src = m_currentDesktop;
         SwitchToDesktop(kb.arg);
+        RemoveEmptyDesktops(src);
     }
     else if (kb.action == "MOVE") {
         MoveCurrentWindowToDesktop(kb.arg);
     }
     else if (kb.action == "MOVE_SWITCH") {
-        // Move window AND switch
+    }
+    else if (kb.action == "REMOVE_EMPTY") {
+        RemoveEmptyDesktops();
     }
     else if (kb.action == "SIMULATE_KEY") {
         SimulateKeyCombo(kb.targetMods, kb.targetVk);
     }
-    else if (kb.action == "RUN") {
-        ShellExecuteA(NULL, "open", kb.runApp.c_str(),
-            kb.runArgs.c_str(), NULL, SW_SHOWNORMAL);
-    }
 }</code></pre>
-            <h2>Action Reference</h2>
+
+            <h3>Current Actions Summary</h3>
             <table>
                 <tr><th>Action</th><th>Parameters</th><th>What It Does</th></tr>
-                <tr><td><code>SWITCH</code></td><td><code>N</code></td><td>Switches to virtual desktop N</td></tr>
-                <tr><td><code>MOVE</code></td><td><code>N</code></td><td>Moves active window to desktop N</td></tr>
-                <tr><td><code>MOVE_SWITCH</code></td><td><code>N</code></td><td>Move window AND switch to desktop N</td></tr>
-                <tr><td><code>SIMULATE_KEY</code></td><td><code>[MODS+KEY]</code></td><td>Presses a different key combo</td></tr>
-                <tr><td><code>RUN</code></td><td><code>("app", "args")</code></td><td>Launches an application</td></tr>
-                <tr><td><code>LoadConf</code></td><td><code>["filename"]</code></td><td>Loads a different .conf file</td></tr>
+                <tr><td><code>SWITCH</code></td><td><code>N</code> (desktop number)</td><td>Switches to virtual desktop N. If <code>New_Desktop_Creation</code> is enabled, creates desktops as needed.</td></tr>
+                <tr><td><code>MOVE</code></td><td><code>N</code> (desktop number)</td><td>Moves the currently active window to desktop N. You stay on the current desktop.</td></tr>
+                <tr><td><code>MOVE_SWITCH</code></td><td><code>N</code> (desktop number)</td><td>Moves the window to desktop N AND switches to it.</td></tr>
+                <tr><td><code>REMOVE_EMPTY</code></td><td>(none)</td><td>Removes all virtual desktops that have no windows on them.</td></tr>
+                <tr><td><code>SIMULATE_KEY</code></td><td><code>[MODS+KEY]</code></td><td>Instead of doing something, presses a different key combo. Example: <code>SIMULATE_KEY[CTRL+V]</code>.</td></tr>
             </table>
+            <hr>
         `,
 
         'dev-desktop': `
-            <h1>Desktop Switching</h1>
-            <p><strong>File:</strong> <code>keybinder.cpp</code> — <code>SwitchToDesktop</code></p>
-            <p>
-                Windows has no official "switch to desktop N" API. WinBind simulates
-                keyboard shortcuts to navigate desktops:
-            </p>
+            <h1>8. Desktop Switching</h1>
+            <p><strong>File:</strong> <code>keybinder.cpp:401</code> — Function: <code>SwitchToDesktop</code></p>
+            <pre><code>void Keybinder::SwitchToDesktop(int num) {
+    if (!m_enabled || m_desktops.empty()) return;
+    RefreshDesktopList();
+    int targetIdx = num - 1;
+    if (targetIdx < 0) return;
+    int created = 0;
+    while (targetIdx >= (int)m_desktops.size()) {
+        if (!m_newDesktopCreation) return;
+        if (++created > 20) return;
+        SimulateKeyCombo(VK_LWIN, VK_LCONTROL, 'D');
+        RefreshDesktopList();
+    }
+    if (m_currentDesktop == targetIdx) return;
+    int diff = targetIdx - m_currentDesktop;
+    WORD dirKey = (diff > 0) ? VK_RIGHT : VK_LEFT;
+    int presses = std::min(abs(diff), 20);
+    for (int i = 0; i < presses; i++)
+        SimulateKeyCombo(VK_LWIN, VK_LCONTROL, dirKey);
+    RefreshDesktopList();
+}</code></pre>
+            <p><strong>How it works:</strong></p>
+            <p>Windows has no official "switch to desktop N" API. So WinBind simulates the keyboard shortcuts:
             <ul>
-                <li><kbd>Win+Ctrl+Left</kbd> — previous desktop</li>
-                <li><kbd>Win+Ctrl+Right</kbd> — next desktop</li>
-                <li><kbd>Win+Ctrl+D</kbd> — create new desktop</li>
-            </ul>
-            <p>
-                To go from desktop 2 to desktop 5, WinBind presses
-                <kbd>Win+Ctrl+Right</kbd> three times.
-            </p>
+                <li><kbd>WIN+CTRL+LEFT</kbd> = go to previous desktop</li>
+                <li><kbd>WIN+CTRL+RIGHT</kbd> = go to next desktop</li>
+                <li><kbd>WIN+CTRL+D</kbd> = create new desktop</li>
+            </ul></p>
+            <p>To get from desktop 2 to desktop 5: press <kbd>WIN+CTRL+RIGHT</kbd> three times.</p>
 
-            <h2>Moving Windows</h2>
-            <p>
-                <code>MoveCurrentWindowToDesktop</code> tries <strong>3 methods</strong>:
-            </p>
-            <ol>
-                <li><strong>Undocumented COM service</strong> — no screen flicker (preferred)</li>
-                <li><strong>Public COM API</strong> — <code>IVirtualDesktopManager::MoveWindowToDesktop</code></li>
-                <li><strong>Keyboard shortcut fallback</strong> — <kbd>Win+Shift+Left/Right</kbd></li>
-            </ol>
+            <h3>How Desktop List is Read: <code>RefreshDesktopList</code></h3>
+            <p><strong>File:</strong> <code>keybinder.cpp:286</code></p>
+            <pre><code>bool Keybinder::RefreshDesktopList() {
+    RegOpenKeyExA(HKEY_CURRENT_USER,
+        "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Explorer\\\\VirtualDesktops",
+        0, KEY_READ, &hKey);
+    BYTE buf[4096];
+    RegQueryValueExA(hKey, "VirtualDesktopIDs", ...);
+    DWORD count = size / 16;
+    for (DWORD i = 0; i < count; i++) {
+        memcpy(&di.id, buf + i * 16, 16);
+        m_desktops.push_back(di);
+    }
+    RegQueryValueExA(hKey, "CurrentVirtualDesktop", ...);
+    for (size_t i = 0; i < m_desktops.size(); i++)
+        if (memcmp(...) == 0) { m_currentDesktop = (int)i; break; }
+}</code></pre>
+            <hr>
 
-            <h2>Removing Empty Desktops</h2>
-            <p>
-                Instead of switching to each desktop (which flickers the screen),
-                WinBind uses <code>EnumWindows</code> + COM to check which desktops
-                have windows, then deletes the empty ones.
-            </p>
+            <h2>9. Moving Windows</h2>
+            <p><strong>File:</strong> <code>keybinder.cpp:470</code> — Function: <code>MoveCurrentWindowToDesktop</code></p>
+            <p>This function tries <strong>3 different ways</strong> to move a window. If one fails, it tries the next.</p>
+            <pre><code>void Keybinder::MoveCurrentWindowToDesktop(int num) {
+    HWND hWnd = GetForegroundWindow();
+    // Attempt 1: Undocumented COM service (no screen flicker)
+    if (TryMoveWindowViaService(hWnd, m_desktops[targetIdx].id)) { Sleep(100); return; }
+    // Attempt 2: Public COM API (IVirtualDesktopManager)
+    CoCreateInstance(clsid, ...);
+    vt->MoveWindowToDesktop(pObj, hWnd, ...);
+    // Attempt 3: Keyboard shortcut fallback
+    SimulateKeyCombo(VK_LWIN, VK_LSHIFT, dirKey);
+}</code></pre>
+
+            <h3>Attempt 1: The Secret COM Service</h3>
+            <p>This calls an <strong>undocumented</strong> Windows COM interface (<code>IVirtualDesktopManagerInternal</code>). WinBind tries <strong>5 different interface IDs</strong> (IIDs):</p>
+            <table>
+                <tr><th>IID Constant</th><th>Windows Version</th></tr>
+                <tr><td><code>GUID_IID_VDMgr_26100</code></td><td>Windows 11 24H2+</td></tr>
+                <tr><td><code>GUID_IID_VDMgr_22621</code></td><td>Windows 11 23H2</td></tr>
+                <tr><td><code>GUID_IID_VDMgr_22000</code></td><td>Windows 11 21H2</td></tr>
+                <tr><td><code>GUID_IID_VDMgr_25179</code></td><td>Pre-24H2 dev builds</td></tr>
+                <tr><td><code>GUID_IID_VDMgr_OLD</code></td><td>Before Windows 11</td></tr>
+            </table>
+            <p>If the vtable index is wrong, instead of crashing, the <strong>SIGSEGV guard</strong> catches the crash and silently tries the next IID.</p>
+            <hr>
+
+            <h2>10. Removing Empty Desktops</h2>
+            <p><strong>File:</strong> <code>keybinder.cpp:511</code> — Function: <code>RemoveEmptyDesktops</code></p>
+            <h3>Step 1: Flicker-Free Detection</h3>
+            <p><strong>The clever trick:</strong> Instead of switching to each desktop to see if it's empty (which makes the screen flash), WinBind uses <code>EnumWindows</code> + <code>IVirtualDesktopManager::GetWindowDesktopId</code>.</p>
+            <p>For each empty desktop, WinBind uses the secret COM to delete it.</p>
+            <hr>
         `,
 
         'dev-transparency': `
-            <h1>Transparency Code</h1>
+            <h1>11. Transparency</h1>
             <p><strong>Files:</strong> <code>Transparency.cpp</code>, <code>Transparency.h</code></p>
-            <p>Transparency is applied using the Windows layered window API:</p>
+
+            <h3>Loading Config</h3>
+            <p><strong>Function:</strong> <code>LoadTransparencyConfig</code> (line 14)</p>
+            <pre><code>int LoadTransparencyConfig() {
+    // Read winbind.conf
+    // Find "Transparency = Enabled/Disabled"
+    // Find "Opacity = 87%"
+    // Return 0 if disabled, or 1-100 for opacity percentage
+}</code></pre>
+            <p><strong>Function:</strong> <code>LoadTransparencyDelayMs</code> (line 50)</p>
+            <pre><code>int LoadTransparencyDelayMs() {
+    // Read winbind.conf
+    // Find "Transparency_Delay = 1s" or "1000ms"
+    // "1s" -> 1 * 1000 = 1000ms
+    // "1000ms" -> 1000 * 1 = 1000ms
+    // "500" -> 500ms (no unit = raw ms)
+    // Clamp between 100 and 60000
+    // Default 1000ms
+}</code></pre>
+
+            <h3>Applying Transparency</h3>
+            <p><strong>Function:</strong> <code>SetWindowTransparency</code> (line 82)</p>
             <pre><code>void SetWindowTransparency(HWND hwnd, int percentage_opacity) {
-    // Make the window "layered"
     SetWindowLongPtr(hwnd, GWL_EXSTYLE,
         GetWindowLongPtr(hwnd, GWL_EXSTYLE) | WS_EX_LAYERED);
-
-    // Set opacity: 0 = fully transparent, 255 = fully opaque
     SetLayeredWindowAttributes(hwnd, 0,
         (BYTE)(255 * percentage_opacity / 100), LWA_ALPHA);
 }</code></pre>
-            <p>
-                An <code>EnumWindows</code> callback applies this to every visible
-                window with a title, excluding system windows.
-            </p>
-            <p>
-                The timer fires every <code>Transparency_Delay</code> milliseconds
-                (default 1000ms). On each tick, it re-reads the config and reapplies
-                — so you can change opacity without restarting.
-            </p>
+
+            <h3>EnumWindows Callback</h3>
+            <p><strong>Function:</strong> <code>EnumWindowsProc</code> (line 92)</p>
+            <pre><code>BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
+    int opacity = (int)lParam;
+    if (opacity <= 0) return TRUE;
+    wchar_t windowTitle[256];
+    GetWindowTextW(hwnd, windowTitle, 256);
+    if (IsWindowVisible(hwnd) && wcslen(windowTitle) > 0)
+        SetWindowTransparency(hwnd, opacity);
+    return TRUE;
+}</code></pre>
+            <hr>
         `,
 
         'dev-simulation': `
-            <h1>Key Simulation (SendInput)</h1>
-            <p><strong>File:</strong> <code>keybinder.cpp</code> — <code>SimulateKeyCombo</code></p>
-            <p>
-                WinBind uses <code>SendInput</code> to inject keystrokes. There are
-                two overloads:
-            </p>
-            <h2>Three-Parameter (WIN+CTRL+D, WIN+CTRL+ARROW)</h2>
-            <pre><code>void SimulateKeyCombo(WORD mod1, WORD mod2, WORD key);</code></pre>
-            <p>
-                Checks if the user is already holding each modifier — if so, skips it.
-                Prevents <kbd>Win+Win</kbd> from sending nothing.
-            </p>
-            <h2>Two-Parameter (SIMULATE_KEY)</h2>
-            <pre><code>void SimulateKeyCombo(DWORD mods, DWORD vk);</code></pre>
-            <p>
-                Releases modifiers the user holds that the target doesn't need,
-                presses missing modifiers, then restores the original state.
-            </p>
-            <h2>The m_simulating Guard</h2>
-            <p>
-                After <code>SendInput</code>, the code pumps messages for ~20ms with
-                <code>m_simulating = true</code>. This prevents injected keys from
-                triggering bindings and causing infinite loops.
-            </p>
+            <h1>12. Key Simulation (SendInput)</h1>
+            <p><strong>File:</strong> <code>keybinder.cpp</code> — Two overloads of <code>SimulateKeyCombo</code></p>
+
+            <h3>Overload 1: Three Parameters (for WIN+CTRL+D, WIN+CTRL+ARROW, WIN+SHIFT+ARROW)</h3>
+            <pre><code>void Keybinder::SimulateKeyCombo(WORD mod1, WORD mod2, WORD key) {
+    INPUT inputs[8] = {};
+    int idx = 0;
+    bool held1 = mod1 && IsModTracked(mod1);
+    bool held2 = mod2 && IsModTracked(mod2);
+    if (!held1 && mod1) { press(mod1); }
+    if (!held2 && mod2) { press(mod2); }
+    { keyDown; }
+    { keyUp; }
+    if (!held2 && mod2) { release(mod2); }
+    if (!held1 && mod1) { release(mod1); }
+    SendInput(idx, inputs, sizeof(INPUT));
+    Sleep(50);
+}</code></pre>
+            <p><strong>Example:</strong> If you're holding <kbd>WIN</kbd> and press a binding that simulates <kbd>WIN+CTRL+LEFT</kbd>:
+            <ul>
+                <li><code>mod1 = WIN</code>, <code>mod2 = CTRL</code></li>
+                <li><code>held1 = true</code> (you're already holding WIN), so skip pressing WIN</li>
+                <li><code>held2 = false</code>, so press CTRL</li>
+                <li>Press LEFT, release LEFT</li>
+                <li>Release CTRL</li>
+                <li>Result: WIN stays held, CTRL is pressed and released</li>
+            </ul></p>
+
+            <h3>Overload 2: Two Parameters (for SIMULATE_KEY and fallback)</h3>
+            <pre><code>void Keybinder::SimulateKeyCombo(DWORD mods, DWORD vk) {
+    DWORD toRelease = m_modsTracked & ~mods;
+    DWORD toPress = mods & ~m_modsTracked;
+    m_simulating = true;
+    SendInput(idx, inputs, sizeof(INPUT));
+    MSG msg;
+    for (int i = 0; i < 20; i++) {
+        while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+            if (msg.message == WM_QUIT) { PostQuitMessage(0); return; }
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+        Sleep(1);
+    }
+    m_simulating = false;
+}</code></pre>
+            <p><strong>Why this complexity?</strong> Imagine you have a binding <code>WIN+1 = SWITCH 2</code>. You press <kbd>WIN+1</kbd>. The switch happens via <kbd>WIN+CTRL+RIGHT</kbd>. But WIN is simulated with <code>SendInput</code>. If you're already holding WIN, and <code>SimulateKeyCombo</code> presses <code>VK_LWIN</code> again, Windows might see <kbd>WIN+WIN</kbd> = nothing happens. So the code: releases your held WIN temporarily, presses CTRL+RIGHT, then re-presses WIN. Smart.</p>
+
+            <h3>The <code>m_simulating</code> Guard</h3>
+            <p>After <code>SendInput</code>, the code pumps messages for ~20ms. During this time, <code>m_simulating = true</code>, so the keyboard hook ignores all these injected keystrokes (they don't trigger bindings). This prevents <strong>infinite loops</strong>.</p>
+            <hr>
         `,
 
         'dev-com': `
-            <h1>COM & The SIGSEGV Guard</h1>
-            <p>
-                WinBind uses COM to talk to Windows' virtual desktop manager. Since some
-                interfaces are <strong>undocumented</strong> and change between Windows
-                versions, it uses a SIGSEGV signal handler to catch crashes.
-            </p>
-            <h2>The SIGSEGV Guard</h2>
+            <h1>13. COM &amp; The SIGSEGV Guard</h1>
+            <h3>What is COM?</h3>
+            <p>COM (Component Object Model) is Windows' way of letting programs talk to each other. WinBind uses COM to:
+            <ul>
+                <li>Ask "which desktop is this window on?"</li>
+                <li>Move windows between desktops</li>
+                <li>Delete empty desktops</li>
+            </ul></p>
+
+            <h3>The DocString Approach</h3>
+            <p>Define the vtable for <code>IVirtualDesktopManager</code> manually:</p>
+            <pre><code>struct IVirtualDesktopManagerVT {
+    HRESULT (*QueryInterface)(void*, REFIID, void**);
+    ULONG   (*AddRef)(void*);
+    ULONG   (*Release)(void*);
+    HRESULT (*IsWindowOnCurrentVirtualDesktop)(void*, HWND, BOOL*);
+    HRESULT (*GetWindowDesktopId)(void*, HWND, GUID*);
+    HRESULT (*MoveWindowToDesktop)(void*, HWND, REFGUID);
+};</code></pre>
+
+            <h3>The SIGSEGV Guard</h3>
+            <p><strong>File:</strong> <code>keybinder.cpp:64-72, 101-158</code></p>
+            <p>Since the undocumented COM interfaces change between Windows versions, calling the wrong vtable index = instant crash. WinBind uses a <strong>signal handler</strong> to catch crashes:</p>
             <pre><code>static jmp_buf g_comJmpBuf;
 
 extern "C" void __cdecl SigSegvHandler(int) {
-    longjmp(g_comJmpBuf, 1);  // Jump back to safety
+    longjmp(g_comJmpBuf, 1);
 }</code></pre>
-            <p>Usage pattern — try multiple COM interface IDs:</p>
-            <pre><code>signal(SIGSEGV, SigSegvHandler);
-if (setjmp(g_comJmpBuf) == 0) {
-    // Try COM call — if it crashes, longjmp back
-} else {
-    // Crash caught, try next approach
-}
-signal(SIGSEGV, oldHandler);</code></pre>
-            <p>
-                This lets WinBind try <strong>5 different interface IDs</strong> for
-                <code>IVirtualDesktopManagerInternal</code> across Windows versions.
-            </p>
+            <p>Usage pattern:</p>
+            <pre><code>void (*oldHandler)(int) = signal(SIGSEGV, SigSegvHandler);
 
-            <h2>The ComPtr Template</h2>
+if (setjmp(g_comJmpBuf) == 0) {
+    // Try the COM call
+} else {
+    // Crash was caught. Handle gracefully.
+}
+
+signal(SIGSEGV, oldHandler);</code></pre>
+            <p>This is <strong>extremely unusual</strong> in C++ — most programs would just crash. But it lets WinBind try 5 different COM interface IDs and silently skip the ones that don't work.</p>
+            <hr>
+
+            <h2>14. The <code>ComPtr</code> Template</h2>
+            <p><strong>File:</strong> <code>keybinder.h:28-42</code></p>
             <pre><code>template&lt;typename T&gt;
 class ComPtr {
     T* p;
 public:
-    ~ComPtr() { if (p) p->Release(); }  // Auto-release
+    ComPtr() : p(nullptr) {}
+    explicit ComPtr(T* ptr) : p(ptr) {}
+    ~ComPtr() { if (p) p->Release(); }
     T** operator&() { return &p; }
     T* operator->() { return p; }
+    operator T*() const { return p; }
+    T* Get() const { return p; }
+    void Reset() { if (p) { p->Release(); p = nullptr; } }
 };</code></pre>
-            <p>
-                RAII wrapper for COM objects. Currently underused in the codebase —
-                most COM calls still use raw pointers.
-            </p>
+            <p><strong>But note:</strong> This <code>ComPtr</code> is barely used in the actual code! Most COM calls use raw pointers and manual <code>Release()</code>. This is an unfinished abstraction. You could improve the code by using <code>ComPtr</code> everywhere.</p>
+            <hr>
+
+            <h2>15. Modifier Tracking</h2>
+            <p><strong>File:</strong> <code>keybinder.cpp:614-621</code></p>
+            <p>WinBind keeps a real-time record of which modifier keys are held:</p>
+            <pre><code>DWORD mb = 0;
+switch (vk) {
+    case VK_LWIN: case VK_RWIN:   mb = MODB_WIN;   break;
+    case VK_LCONTROL: case VK_RCONTROL: mb = MODB_CTRL; break;
+    case VK_LMENU: case VK_RMENU: mb = MODB_ALT;   break;
+    case VK_LSHIFT: case VK_RSHIFT: mb = MODB_SHIFT; break;
+}
+if (mb) {
+    m_modsTracked = down ? (m_modsTracked | mb) : (m_modsTracked & ~mb);
+    return 0;
+}</code></pre>
+            <p><strong>Why not use <code>GetAsyncKeyState</code>?</strong> On modern Windows, <code>GetAsyncKeyState</code> can miss modifier state changes when the hook is processing keys. Tracking from the hook events is more reliable.</p>
+
+            <h3>The Bitmask</h3>
+            <table>
+                <tr><th>Bit</th><th>Value</th><th>Constant</th><th>Key</th></tr>
+                <tr><td>0</td><td>0x01</td><td><code>MODB_WIN</code></td><td>Windows key</td></tr>
+                <tr><td>1</td><td>0x02</td><td><code>MODB_CTRL</code></td><td>Ctrl</td></tr>
+                <tr><td>2</td><td>0x04</td><td><code>MODB_ALT</code></td><td>Alt</td></tr>
+                <tr><td>3</td><td>0x08</td><td><code>MODB_SHIFT</code></td><td>Shift</td></tr>
+            </table>
+            <hr>
+
+            <h2>16. The <code>m_busy</code> / <code>m_simulating</code> Guards</h2>
+            <h3><code>m_busy</code> — Prevents Re-entrant Execution</h3>
+            <pre><code>void Keybinder::ExecuteQueuedAction(int bindingIndex) {
+    if (m_busy) return;
+    m_busy = true;
+    ExecuteAction(m_bindings[bindingIndex]);
+    m_busy = false;
+}</code></pre>
+            <h3><code>m_simulating</code> — Prevents Infinite Loops</h3>
+            <pre><code>void Keybinder::SimulateKeyCombo(DWORD mods, DWORD vk) {
+    m_simulating = true;
+    SendInput(...);
+    m_simulating = false;
+}</code></pre>
+            <p><strong>Why Two Guards?</strong></p>
+            <ul>
+                <li><code>m_busy</code> is for when code is actively executing (switching desktops, moving windows)</li>
+                <li><code>m_simulating</code> is specifically for the <code>SendInput</code> injection window (which happens within <code>m_busy</code>)</li>
+            </ul>
+            <hr>
         `,
 
         'dev-adding': `
-            <h1>Adding Features</h1>
-            <h2>Add a New Action (e.g. CLOSE_WINDOW)</h2>
-            <ol>
-                <li><strong><code>keybinder.h</code></strong> — Add fields to <code>Keybinding</code> struct if needed</li>
-                <li><strong><code>keybinder.cpp</code> <code>LoadConfig</code></strong> — Add parsing logic</li>
-                <li><strong><code>keybinder.cpp</code> <code>ExecuteAction</code></strong> — Add <code>else if</code> branch</li>
-                <li><strong>Add headers</strong> — <code>#include</code> any new APIs</li>
-                <li><strong>Document</strong> — Add syntax comment in <code>winbind.conf</code></li>
-            </ol>
+            <h1>17. The <code>RUN</code> Action — Launch Apps from Keybinds</h1>
+            <h3>What it does</h3>
+            <pre><code>CTRL+SHIFT+P = RUN("notepad.exe", "C:\\log.txt")</code></pre>
 
-            <h2>Add a New Config Option</h2>
-            <ol>
-                <li>Add member variable to <code>Keybinder</code> class</li>
-                <li>Initialize in constructor</li>
-                <li>Add <code>parseBool</code> call in <code>LoadConfig</code></li>
-                <li>Use the option in the relevant function</li>
-            </ol>
+            <h3>How it's implemented</h3>
+            <p>The <code>RUN</code> action touches <strong>4 places</strong> in the code:</p>
+            <h4>1. The <code>Keybinding</code> struct stores the app + args</h4>
+            <pre><code>struct Keybinding {
+    std::string runApp;
+    std::string runArgs;
+};</code></pre>
 
-            <h2>Run Once vs Every Time</h2>
+            <h4>2. Config parsing extracts the expression</h4>
+            <pre><code>if (act.find("RUN(") == 0 && act.back() == ')') {
+    std::string inner = act.substr(4, act.size() - 5);
+    size_t comma = inner.find(',');
+    if (comma != std::string::npos) {
+        runApp = Trim(inner.substr(0, comma));
+        runArgs = Trim(inner.substr(comma + 1));
+    } else {
+        runApp = Trim(inner);
+    }
+    if (runApp.size() >= 2 && runApp[0] == '"' && runApp.back() == '"')
+        runApp = runApp.substr(1, runApp.size() - 2);
+    if (runArgs.size() >= 2 && runArgs[0] == '"' && runArgs.back() == '"')
+        runArgs = runArgs.substr(1, runArgs.size() - 2);
+    act = "RUN";
+}</code></pre>
+
+            <h4>3. Action dispatch launches the process</h4>
+            <pre><code>else if (kb.action == "RUN") {
+    ShellExecuteA(NULL, "open", kb.runApp.c_str(),
+        kb.runArgs.empty() ? NULL : kb.runArgs.c_str(),
+        NULL, SW_SHOWNORMAL);
+}</code></pre>
+
+            <h3>Example config lines</h3>
+            <pre><code>CTRL+SHIFT+P = RUN("notepad.exe", "")          # No args
+CTRL+SHIFT+O = RUN("C:\\Program Files\\MyApp\\app.exe", "--safe-mode")
+WIN+B = RUN("cmd.exe", "/c echo hello")
+CTRL+ALT+T = RUN("ms-settings:")</code></pre>
+
+            <hr>
+
+            <h2>18. How to Add a New Config Option</h2>
+            <h3>Step 1: Add a member variable</h3>
+            <pre><code>bool m_launchAtStartup;</code></pre>
+            <h3>Step 2: Parse it in <code>LoadConfig</code></h3>
+            <pre><code>if (lhs == "Launch_At_Startup") { parseBool(m_launchAtStartup); continue; }</code></pre>
+            <h3>Step 3: Use it somewhere</h3>
+            <hr>
+
+            <h2>19. How to Make Something Run Once vs Every Time</h2>
             <table>
-                <tr><th>Pattern</th><th>When</th></tr>
-                <tr><td>Keybind action</td><td>Once per keypress</td></tr>
-                <tr><td>Program start</td><td>Once at launch</td></tr>
-                <tr><td>Every keystroke</td><td>In <code>HandleKeyEvent</code></td></tr>
-                <tr><td>Periodic timer</td><td>Every N ms via <code>SetTimer</code></td></tr>
+                <tr><th>Pattern</th><th>Runs When</th><th>Example</th></tr>
+                <tr><td>Keybind action</td><td>When keybind pressed</td><td>Switching desktop</td></tr>
+                <tr><td>Program start</td><td>Once at launch</td><td>Loading config</td></tr>
+                <tr><td>Every keystroke</td><td>Each keypress</td><td>Checking config changes</td></tr>
+                <tr><td>Timer</td><td>Every N ms</td><td>Applying transparency</td></tr>
             </table>
+            <hr>
         `,
 
         'dev-build': `
-            <h1>Build & Run</h1>
-            <h2>Using build.bat</h2>
-            <pre><code>build.bat           # Just compile
-build.bat --run     # Compile AND launch</code></pre>
-            <h2>Manual Compile</h2>
-            <pre><code>g++ -O2 -static -mwindows -std=c++11 -s \\
-    main.cpp keybinder.cpp Transparency.cpp \\
-    -o WinBind.exe -lole32 -lgdi32 -luser32 -luuid -ldwmapi</code></pre>
-            <h2>Flags Explained</h2>
+            <h1>20. Build &amp; Run</h1>
+            <h3>Using build.bat</h3>
+            <pre><code>build.bat          # Just compile
+build.bat --run    # Compile AND launch</code></pre>
+            <p>The build script:</p>
+            <pre><code>g++ -O2 -static -mwindows -std=c++11 -s main.cpp keybinder.cpp Transparency.cpp -o WinBind.exe -lole32 -lgdi32 -luser32 -luuid -ldwmapi</code></pre>
+
+            <h3>Flags Explained</h3>
             <table>
                 <tr><th>Flag</th><th>Meaning</th></tr>
                 <tr><td><code>-O2</code></td><td>Optimize for speed</td></tr>
-                <tr><td><code>-static</code></td><td>No DLL dependencies</td></tr>
-                <tr><td><code>-mwindows</code></td><td>No console window</td></tr>
-                <tr><td><code>-std=c++11</code></td><td>C++11 standard</td></tr>
+                <tr><td><code>-static</code></td><td>Include libraries in the .exe (no DLL dependencies)</td></tr>
+                <tr><td><code>-mwindows</code></td><td>Windows app (no console window)</td></tr>
+                <tr><td><code>-std=c++11</code></td><td>Use C++11 standard</td></tr>
                 <tr><td><code>-s</code></td><td>Strip debug symbols (smaller .exe)</td></tr>
+                <tr><td><code>-lole32</code></td><td>Link with COM library</td></tr>
+                <tr><td><code>-lgdi32</code></td><td>Link with GDI (graphics)</td></tr>
+                <tr><td><code>-luser32</code></td><td>Link with user interface</td></tr>
+                <tr><td><code>-luuid</code></td><td>Link with UUID library</td></tr>
+                <tr><td><code>-ldwmapi</code></td><td>Link with Desktop Window Manager</td></tr>
             </table>
-            <h2>Running</h2>
-            <pre><code>WinBind.exe                                    # Uses winbind.conf
-WinBind.exe --config "C:\\my.conf"             # Custom config
-WinBind.exe --config=my_settings.conf          # Alternative syntax</code></pre>
+
+            <h3>Running</h3>
+            <pre><code>WinBind.exe                              # Uses winbind.conf in current folder
+WinBind.exe --config "C:\\my.conf"        # Uses custom config
+WinBind.exe --config=my_settings.conf    # Alternative syntax</code></pre>
+            <hr>
         `,
 
         'dev-pitfalls': `
-            <h1>Common Pitfalls</h1>
+            <h1>21. Common Pitfalls</h1>
 
-            <h3>WIN+ALT+NUMBER doesn't work</h3>
-            <p>
-                Windows 11 reserves <kbd>Win+Alt+Number</kbd> (taskbar jump lists)
-                and <kbd>Win+Shift+Number</kbd> (new instance). No user-mode hook
-                can intercept these. Use <kbd>Win+Ctrl+Number</kbd> instead.
-            </p>
+            <h3>Pitfall 1: WIN+ALT+NUMBER doesn't work</h3>
+            <p><strong>Why:</strong> Windows 11 reserves <kbd>WIN+ALT+NUMBER</kbd> (taskbar jump lists) and <kbd>WIN+SHIFT+NUMBER</kbd> (new instance). No user-mode hook can intercept these.</p>
+            <p><strong>Fix:</strong> Use <kbd>WIN+CTRL+NUMBER</kbd> or other non-reserved combos.</p>
 
-            <h3>Config changes don't take effect</h3>
-            <p>
-                <code>CheckConfigChanged</code> compares file timestamps. Some editors
-                (like Notepad) create a new file on save, which changes the timestamp.
-                Save the file again after WinBind starts.
-            </p>
+            <h3>Pitfall 2: Config changes don't take effect</h3>
+            <p><strong>Why:</strong> <code>CheckConfigChanged</code> compares file modification timestamps. Some editors (like Notepad) create a new file on save, which changes the timestamp. But if you edit the file while WinBind isn't running, the timestamp is already newer when WinBind starts — so it loads it once and doesn't detect changes until you save again.</p>
+            <p><strong>Fix:</strong> Save the file again after WinBind starts. Or restart WinBind.</p>
 
-            <h3>Simulated keys don't reach the app</h3>
-            <p>
-                Some apps (games, terminals) use <code>GetAsyncKeyState</code> or raw
-                input instead of the message queue. <code>SendInput</code> won't reach
-                them. There is no universal fix.
-            </p>
+            <h3>Pitfall 3: Simulated keys don't reach the target app</h3>
+            <p><strong>Why:</strong> Some apps (especially games, terminals, and admin apps) use <code>GetAsyncKeyState</code> or raw input instead of the keyboard message queue. <code>SendInput</code> injects into the message queue — it won't reach apps that bypass the queue.</p>
+            <p><strong>Fix:</strong> There's no universal fix. Try <kbd>WIN+SHIFT+ARROW</kbd> (attempt 3 in <code>MoveCurrentWindowToDesktop</code>) as a fallback, or run WinBind as admin (though this is not recommended).</p>
 
-            <h3>Crash on COM calls</h3>
-            <p>
-                The undocumented <code>IVirtualDesktopManagerInternal</code> changes
-                with every Windows update. If a new IID is needed, add it to the
-                <code>pairs[]</code> array in <code>TryMoveWindowViaService</code>.
-            </p>
+            <h3>Pitfall 4: Crash on COM calls</h3>
+            <p><strong>Why:</strong> The undocumented <code>IVirtualDesktopManagerInternal</code> interface changes with every Windows update. If the vtable index for <code>MoveViewToDesktop</code>, <code>FindDesktop</code>, or <code>RemoveDesktop</code> changed, the SIGSEGV guard catches it, but the operation fails.</p>
+            <p><strong>Fix:</strong> Check if there's a new IID for your Windows version and add it to the <code>pairs[]</code> array in <code>TryMoveWindowViaService</code> and <code>RemoveEmptyDesktops</code>.</p>
 
-            <h3>SendInput doesn't work inside the hook</h3>
-            <p>
-                Windows restricts <code>SendInput</code> inside low-level hook
-                callbacks. WinBind works around this by posting a message to the
-                hidden window and executing actions in the message loop.
-            </p>
+            <h3>Pitfall 5: <code>SendInput</code> doesn't work inside the hook</h3>
+            <p><strong>Why:</strong> Windows has a restriction: <code>SendInput</code> called from within a low-level keyboard hook callback may not work correctly. That's why WinBind <strong>posts a message</strong> to the hidden window and executes actions in the message loop instead.</p>
 
-            <h3>Infinite loop (binding triggers itself)</h3>
-            <p>
-                Don't bind a key to simulate itself (e.g.
-                <code>WIN+1 = SIMULATE_KEY[WIN+1]</code>). The
-                <code>m_simulating</code> guard prevents loops during the 20ms
-                pump window, but timing issues can still occur.
-            </p>
+            <h3>Pitfall 6: Infinite loop (binding triggers itself)</h3>
+            <p>If you bind <code>WIN+1 = SIMULATE_KEY[WIN+1]</code>, pressing <kbd>WIN+1</kbd> will:
+            <ol>
+                <li>Hook catches <kbd>WIN+1</kbd></li>
+                <li>Posts <code>WM_KB_EXECUTE</code></li>
+                <li>Executes <code>SIMULATE_KEY[WIN+1]</code></li>
+                <li>SendInput injects <kbd>WIN+1</kbd></li>
+                <li>Hook catches injected <kbd>WIN+1</kbd></li>
+                <li>Goes to step 2 — forever</li>
+            </ol></p>
+            <p><strong>The fix:</strong> <code>m_simulating</code> guard prevents injected keys from matching bindings. But only during the 20ms message pump window. If the timing is unlucky, you can still get loops. Don't bind a key to simulate itself.</p>
+            <hr>
+
+            <p><em>Happy coding! Remember: every expert was once a beginner who didn't give up.</em></p>
         `,
     };
 
