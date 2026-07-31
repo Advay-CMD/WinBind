@@ -22,7 +22,9 @@ Here are some places I didn't use AI:
 
 Here is a short video showing the power that WinBind has, within just 1 *.conf* file.
 
-[vid]
+[!DEMO](https://github.com/user-attachments/assets/1dbcc1c4-8800-4661-8b6d-3b01227b54b9)
+
+
 
 ## What is WinBind?
 
