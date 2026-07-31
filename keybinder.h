@@ -1,7 +1,7 @@
 // WinBind - keybinder script Header
 // Declares the Keybinder class: a low-level keyboard hook that intercepts
 // configurable hotkeys and translates them into virtual desktop operations.
-// Also my magnum opus — 800+ lines of pure Windows jank.
+
 #pragma once
 #include <windows.h>
 #include <string>
