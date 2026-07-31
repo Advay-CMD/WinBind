@@ -71,7 +71,6 @@ void LoadStartupConfig() {
         line = Trim(line);
         if (line.empty() || line[0] == '#') {
             if (!inStartup) continue;
-            // Inside multi-line, empty lines and comments are allowed
             continue;
         }
 
@@ -80,10 +79,8 @@ void LoadStartupConfig() {
                 StartupApps = ParseList(startupAccum);
                 inStartup = false;
             } else if (line == "[") {
-                // Opening bracket alone, accumulator starts fresh
                 startupAccum = "";
             } else {
-                // Quoted or unquoted item
                 if (!startupAccum.empty()) startupAccum += ",";
                 if (line.size() >= 2 && line[0] == '"' && line.back() == '"')
                     startupAccum += line;
@@ -103,14 +100,94 @@ void LoadStartupConfig() {
         if (key == "startup") {
             std::string val = Trim(line.substr(eq + 1));
             if (val.find(']') != std::string::npos) {
-                // Single-line format: Startup = ["a", "b"]
                 StartupApps = ParseList(val);
             } else {
-                // Multi-line starts: collect lines until ]
                 inStartup = true;
                 startupAccum = val;
             }
         }
+    }
+}
+
+static void LaunchApp(const std::string& app) {
+    std::string appPath = app;
+    std::string appArgs;
+    if (appPath.size() >= 2 && appPath[0] == '"') {
+        size_t closeQuote = appPath.find('"', 1);
+        if (closeQuote != std::string::npos) {
+            appArgs = Trim(appPath.substr(closeQuote + 1));
+            appPath = appPath.substr(1, closeQuote - 1);
+        }
+    } else {
+        size_t sp = appPath.find(' ');
+        if (sp != std::string::npos) {
+            appArgs = Trim(appPath.substr(sp + 1));
+            appPath = appPath.substr(0, sp);
+        }
+    }
+
+    HINSTANCE result = ShellExecuteA(
+        nullptr,
+        "open",
+        appPath.c_str(),
+        appArgs.empty() ? nullptr : appArgs.c_str(),
+        nullptr,
+        SW_SHOWNORMAL);
+
+    if ((INT_PTR)result <= 32) {
+        std::wstring wapp(app.begin(), app.end());
+        std::wstring msg;
+
+        switch ((INT_PTR)result) {
+        case 0:
+            msg = L"Failed to launch '" + wapp + L"': Out of memory or resources.";
+            break;
+        case ERROR_FILE_NOT_FOUND:
+            msg = L"Failed to launch '" + wapp + L"': File not found.";
+            break;
+        case ERROR_PATH_NOT_FOUND:
+            msg = L"Failed to launch '" + wapp + L"': Path not found.";
+            break;
+        case ERROR_BAD_FORMAT:
+            msg = L"Failed to launch '" + wapp + L"': Invalid executable.";
+            break;
+        case SE_ERR_ACCESSDENIED:
+            msg = L"Failed to launch '" + wapp + L"': Access denied.";
+            break;
+        case SE_ERR_ASSOCINCOMPLETE:
+            msg = L"Failed to launch '" + wapp + L"': File association incomplete.";
+            break;
+        case SE_ERR_DDEBUSY:
+            msg = L"Failed to launch '" + wapp + L"': DDE busy.";
+            break;
+        case SE_ERR_DDEFAIL:
+            msg = L"Failed to launch '" + wapp + L"': DDE failed.";
+            break;
+        case SE_ERR_DDETIMEOUT:
+            msg = L"Failed to launch '" + wapp + L"': DDE timeout.";
+            break;
+        case SE_ERR_DLLNOTFOUND:
+            msg = L"Failed to launch '" + wapp + L"': DLL not found.";
+            break;
+        case SE_ERR_NOASSOC:
+            msg = L"Failed to launch '" + wapp + L"': No file association.";
+            break;
+        case SE_ERR_OOM:
+            msg = L"Failed to launch '" + wapp + L"': Out of memory.";
+            break;
+        case SE_ERR_SHARE:
+            msg = L"Failed to launch '" + wapp + L"': Sharing violation.";
+            break;
+        default:
+            msg = L"Failed to launch '" + wapp + L"': Unknown ShellExecute error.";
+            break;
+        }
+
+        DWORD err = GetLastError();
+        msg += L"\n\nGetLastError() = ";
+        msg += std::to_wstring(err);
+
+        MessageBoxW(nullptr, msg.c_str(), L"WinBind - Startup Error", MB_OK | MB_ICONERROR);
     }
 }
 
@@ -159,7 +236,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int) {
 
     if (!kb.Init()) return 1;
 
-    // Apply StealFocus at startup if enabled
     {
         WindowStylerSettings ws = LoadWindowStylerConfig();
         if (ws.stealFocus) StealFocus(TRUE);
@@ -173,120 +249,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int) {
 
     LoadStartupConfig();
 
-    for (const auto& app : StartupApps) {
-        // Split app into path + args (handles quoted paths with spaces)
-        std::string appPath = app;
-        std::string appArgs;
-        if (appPath.size() >= 2 && appPath[0] == '"') {
-            size_t closeQuote = appPath.find('"', 1);
-            if (closeQuote != std::string::npos) {
-                appArgs = Trim(appPath.substr(closeQuote + 1));
-                appPath = appPath.substr(1, closeQuote - 1);
-            }
-        } else {
-            size_t sp = appPath.find(' ');
-            if (sp != std::string::npos) {
-                appArgs = Trim(appPath.substr(sp + 1));
-                appPath = appPath.substr(0, sp);
-            }
-        }
+    for (const auto& app : StartupApps)
+        LaunchApp(app);
 
-    HINSTANCE result = ShellExecuteA(
-        nullptr,
-        "open",
-        appPath.c_str(),
-        appArgs.empty() ? nullptr : appArgs.c_str(),
-        nullptr,
-        SW_SHOWNORMAL);
-
-    if ((INT_PTR)result <= 32) {
-        std::wstring wapp(app.begin(), app.end());
-        std::wstring msg;
-
-        switch ((INT_PTR)result) {
-        case 0:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Out of memory or resources.";
-            break;
-
-        case ERROR_FILE_NOT_FOUND:
-            msg = L"Failed to launch '" + wapp +
-                  L"': File not found.";
-            break;
-
-        case ERROR_PATH_NOT_FOUND:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Path not found.";
-            break;
-
-        case ERROR_BAD_FORMAT:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Invalid executable.";
-            break;
-
-    case SE_ERR_ACCESSDENIED:
-        msg = L"Failed to launch '" + wapp +
-              L"': Access denied.";
-        break;
-
-    case SE_ERR_ASSOCINCOMPLETE:
-        msg = L"Failed to launch '" + wapp +
-              L"': File association incomplete.";
-        break;
-
-    case SE_ERR_DDEBUSY:
-        msg = L"Failed to launch '" + wapp +
-              L"': DDE busy.";
-        break;
-
-    case SE_ERR_DDEFAIL:
-        msg = L"Failed to launch '" + wapp +
-              L"': DDE failed.";
-        break;
-
-    case SE_ERR_DDETIMEOUT:
-        msg = L"Failed to launch '" + wapp +
-              L"': DDE timeout.";
-        break;
-
-        case SE_ERR_DLLNOTFOUND:
-            msg = L"Failed to launch '" + wapp +
-                  L"': DLL not found.";
-            break;
-
-        case SE_ERR_NOASSOC:
-            msg = L"Failed to launch '" + wapp +
-                  L"': No file association.";
-            break;
-
-        case SE_ERR_OOM:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Out of memory.";
-            break;
-
-        case SE_ERR_SHARE:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Sharing violation.";
-            break;
-
-        default:
-            msg = L"Failed to launch '" + wapp +
-                  L"': Unknown ShellExecute error.";
-        break;
-    }
-
-    DWORD err = GetLastError();
-
-    msg += L"\n\nGetLastError() = ";
-    msg += std::to_wstring(err);
-
-    MessageBoxW(
-        nullptr,
-        msg.c_str(),
-        L"WinBind - Startup Error",
-        MB_OK | MB_ICONERROR);
-    } 
-};
     MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
