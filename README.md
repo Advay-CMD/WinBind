@@ -56,7 +56,7 @@ My script wins in that case. It is simple, easy, well documented, and easy to us
 
 ## Sponser
 
-For now, there is no sponsering set for the project. If you want to really sponser, I suggest you instead contribute to the project and share the project to everyone else. I think that would be enough for sopnsering my project.
+For now, there is no sponsering set for the project. If you want to really sponser, I suggest you instead contribute to the project and share the project to everyone else. I think that would be enough for sponsering my project.
 
 ## Minimum Requirements
 
