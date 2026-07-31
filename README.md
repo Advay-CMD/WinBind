@@ -8,23 +8,21 @@ I thereby declare that the project is using AI or other Chatbot/Neural Network t
 
 Here are some places where I used AI:
 
-- CSS(very little)
-- CPP code(mostly only in keybind)
-- HTML(very little)
+- CSS (very little)
+- CPP code (mostly only in keybind)
+- HTML (very little)
 
 Here are some places I didn't use AI:
 
-- Logic(mostly)
+- Logic (mostly)
 - Ideas on large
-- Documentations(only DEVLOPER_GUIDE.md has a little bit)
+- Documentations (only DEVLOPER_GUIDE.md has a little bit)
 
 ## Need a visual proof?
 
 Here is a short video showing the power that WinBind has, within just 1 *.conf* file.
 
 [!DEMO](https://github.com/user-attachments/assets/1dbcc1c4-8800-4661-8b6d-3b01227b54b9)
-
-
 
 ## What is WinBind?
 
@@ -50,9 +48,7 @@ You are free to contribute to this project. This project is completely open-sour
 
 One thing that I found simmilar to my project is a very well known project, AutoHotKey.
 
-While I admit it is a very powerful project, and can do **MUCH** beyound this utility, the main thing that makes my project completely distinct is the configuration.
-
-AutoHotKey Script at one point, becomes coding. Not a simple file users can understand and comprehend.
+While I admit it is a very powerful project, and can do **MUCH** beyound this utility, the main thing that makes my project completely distinct is the configuration. AutoHotKey Script at one point, becomes coding. It's no longer a simple file users can understand and comprehend.
 
 My script wins in that case. It is simple, easy, well documented, and easy to use.
 
