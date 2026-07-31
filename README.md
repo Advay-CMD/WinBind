@@ -4,7 +4,7 @@ Welcome to WinBind! It is a neat, sleek application, allowing you to set up the 
 
 ## AI declaration
 
-I thereby declare that the project is using AI or other Chatbot/Neural Network type bases for boilerplate, code and some logic. I also comply and agree that this project has used AI in the ration 30:70 or lesser than 30%, ensuring fairness and compliance to the event.
+I thereby declare that the project is using AI or other Chatbot/Neural Network type bases for boilerplate, code and some logic. I also comply and agree that this project has used AI in the ratio 30:70 or lesser than 30%, ensuring fairness and compliance to the event.
 
 Here are some places where I used AI:
 
