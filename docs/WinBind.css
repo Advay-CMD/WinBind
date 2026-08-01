@@ -443,3 +443,10 @@ body {
         0 0 35px rgba(56, 189, 248, 0.25),
         0 0 35px rgba(56, 189, 248, 0.15);
 }
+
+.download-btn,
+.github-btn {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+}
